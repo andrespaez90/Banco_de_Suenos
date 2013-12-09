@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.db.Activities.NewGoalActivity"
+            android:label="@string/title_activity_new_goal" >
+        </activity>
+        <activity
+            android:name="com.devsmind.bancodesuenos.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
     </application>
 
 </manifest>

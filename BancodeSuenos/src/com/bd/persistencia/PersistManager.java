@@ -15,7 +15,7 @@ public class PersistManager extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATED TABLE usuario (name TEXT, mail TEXT, pass TEXT)");		
+		db.execSQL("CREATED TABLE User (name TEXT, mail TEXT, pass TEXT)");		
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class PersistManager extends SQLiteOpenHelper{
 	public Vector<String> getAllRegisters(String Table){
 		Vector<String> result = new Vector<String>();
 		SQLiteDatabase db = getReadableDatabase();
-		Cursor cursosr = db.rawQuery("SELECT * FROM"+Table, null);
+		Cursor cursosr = db.rawQuery("SELECT * FROM "+Table, null);
 		while(cursosr.moveToNext()){
 			result.add(cursosr.getString(0));
 		}
