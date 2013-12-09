@@ -39,26 +39,28 @@ public final class R {
         public static final int logo_inicial=0x7f020008;
     }
     public static final class id {
-        public static final int ImagenB_new=0x7f0a0009;
+        public static final int ImagenB_new=0x7f0a000a;
         public static final int Login_logo=0x7f0a0008;
-        public static final int action_settings=0x7f0a0013;
-        public static final int autoCompleteTextView1=0x7f0a000b;
+        public static final int action_settings=0x7f0a0015;
+        public static final int autoCompleteTextView1=0x7f0a000d;
         public static final int button1=0x7f0a0006;
         public static final int button2=0x7f0a0007;
         public static final int editText1=0x7f0a0000;
-        public static final int editText2=0x7f0a0011;
+        public static final int editText2=0x7f0a0013;
         public static final int imageButton1=0x7f0a0003;
         public static final int imageButton2=0x7f0a0004;
         public static final int imageView1=0x7f0a0002;
-        public static final int newgoal_calendar=0x7f0a000e;
-        public static final int newgoal_date=0x7f0a000c;
-        public static final int newgoal_type=0x7f0a000a;
-        public static final int spinner1=0x7f0a0012;
+        public static final int linearLayout1=0x7f0a0009;
+        public static final int listView1=0x7f0a000b;
+        public static final int newgoal_calendar=0x7f0a0010;
+        public static final int newgoal_date=0x7f0a000e;
+        public static final int newgoal_type=0x7f0a000c;
+        public static final int spinner1=0x7f0a0014;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a0005;
-        public static final int textView3=0x7f0a000d;
-        public static final int textView4=0x7f0a000f;
-        public static final int textView5=0x7f0a0010;
+        public static final int textView3=0x7f0a000f;
+        public static final int textView4=0x7f0a0011;
+        public static final int textView5=0x7f0a0012;
     }
     public static final class layout {
         public static final int activity_custom_goal=0x7f030000;
