@@ -15,7 +15,7 @@ public class PersistManager extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATED TABLE User (name TEXT, mail TEXT, pass TEXT)");		
+		db.execSQL("CREATE TABLE User (name TEXT, mail TEXT, pass TEXT)");		
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class Usuario {
 		Name = name;
 		Mail = mail;
 		Password = password;
-		Goals = new ArrayList<Goal>()
+		Goals = new ArrayList<Goal>();
 	}	
 	
 	public String getName() {

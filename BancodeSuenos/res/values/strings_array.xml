@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string-array name="type_goal">
+        <item>Viajar</item>
+        <item>Comprar</item>
+        <item>Estudiar</item>
+        <item>Ahorrar</item>
+    </string-array>
+    
+</resources>
