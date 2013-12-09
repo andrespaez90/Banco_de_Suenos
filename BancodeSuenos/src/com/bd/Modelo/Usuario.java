@@ -9,7 +9,7 @@ public class Usuario {
 	private String Password;
 	
 	private ArrayList<Goal> Goals; 
-	
+	    
 	
 	public Usuario(String name, String mail, String password) {
 		super();
