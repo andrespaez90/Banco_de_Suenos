@@ -30,6 +30,10 @@
             android:name="com.devsmind.bancodesuenos.MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name="com.devsmind.bancodesuenos.CustomGoalActivity"
+            android:label="@string/title_activity_custom_goal" >
+        </activity>
     </application>
 
 </manifest>

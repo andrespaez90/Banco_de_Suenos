@@ -39,7 +39,7 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		myMonth = calendar.get(Calendar.MONTH);
 		myDay = calendar.get(Calendar.DAY_OF_MONTH);
 		Date = (TextView) findViewById(R.id.newgoal_date);
-		Date.setText(myDay+"/"+myMonth+1+"/"+myYear);
+		Date.setText(myDay+"/"+(myMonth+1)+"/"+myYear);
 	}
 
 	
@@ -71,9 +71,9 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		 @Override
 		 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 			 myDay = dayOfMonth;
-			 myMonth = monthOfYear;
+			 myMonth = monthOfYear+1;
 			 myYear = year;
-			 Date.setText(myDay+"/"+myMonth+1+"/"+myYear); 
+			 Date.setText(myDay+"/"+myMonth+"/"+myYear); 
 		 }
 	 };
 

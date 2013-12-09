@@ -10,13 +10,15 @@
     tools:context=".NewGoalActivity" >
 
    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/titulo_nuevoSueno"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+       android:id="@+id/textView1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_centerHorizontal="true"
+       android:text="@string/titulo_nuevoSueno"
+       android:textStyle="bold"
+       android:textAppearance="?android:attr/textAppearanceLarge"
+       android:textColor="@color/blue_title" />
 
     <TextView
         android:id="@+id/textView2"
@@ -36,7 +38,7 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="8dp"
         android:entries="@array/type_goal" />
 
     <AutoCompleteTextView
@@ -58,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/autoCompleteTextView1"
         android:layout_below="@+id/textView3"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="17dp"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -78,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/textView1"
         android:layout_below="@+id/textView3"
+        android:layout_marginTop="5dp"
         android:src="@android:drawable/ic_menu_today" />
 
     <EditText
@@ -87,7 +90,7 @@
         android:layout_alignLeft="@+id/newgoal_date"
         android:layout_alignRight="@+id/autoCompleteTextView1"
         android:layout_below="@+id/textView4"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/signo_pesos"
         android:inputType="number" />
@@ -98,8 +101,39 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/newgoal_calendar"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="15dp"
         android:text="@string/pregunta_costo"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="15dp"
+        android:text="@string/pregunta_como_ahorras"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/newgoal_calendar"
+        android:ems="10"
+        android:hint="@string/signo_pesos"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignLeft="@+id/newgoal_calendar"
+        android:layout_marginBottom="0dp"
+        android:entries="@array/type_save" />
 
 </RelativeLayout>
