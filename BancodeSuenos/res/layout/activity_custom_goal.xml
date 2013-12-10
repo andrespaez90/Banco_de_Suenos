@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgraund_tilde"
+    android:background="@drawable/background1_tilde"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -11,7 +11,7 @@
 
     
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/CustomG_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -28,9 +28,9 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_alignRight="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/CustomG_Name"
+        android:layout_alignRight="@+id/CustomG_Name"
+        android:layout_below="@+id/CustomG_Name"
         android:layout_marginTop="27dp"
         android:src="@android:drawable/progress_indeterminate_horizontal" />
 
@@ -65,7 +65,7 @@
         android:textColor="@color/blue_title" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/start_bcorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageButton1"
@@ -80,10 +80,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/start_bcorreo"
+        android:layout_alignBottom="@+id/start_bcorreo"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_toLeftOf="@+id/button1"
+        android:layout_toLeftOf="@+id/start_bcorreo"
         android:text="@string/boton_omitir"
         android:textAlignment="textStart" />
 
@@ -94,6 +94,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/imageButton2"
         android:layout_marginTop="26dp"
+        android:gravity="center"
         android:text="@string/pregunta_nombre"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

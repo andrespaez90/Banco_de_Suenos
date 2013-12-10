@@ -15,6 +15,7 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int blue_subtitle=0x7f040001;
         public static final int blue_title=0x7f040000;
     }
     public static final class dimen {
@@ -30,43 +31,56 @@ public final class R {
     public static final class drawable {
         public static final int agregar_sueno=0x7f020000;
         public static final int amigos=0x7f020001;
-        public static final int backgraund_tilde=0x7f020002;
-        public static final int background=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int login=0x7f020005;
-        public static final int loginface=0x7f020006;
-        public static final int logintw=0x7f020007;
-        public static final int logo_inicial=0x7f020008;
+        public static final int background0=0x7f020002;
+        public static final int background0_tilde=0x7f020003;
+        public static final int background1=0x7f020004;
+        public static final int background1_tilde=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int login=0x7f020007;
+        public static final int loginface=0x7f020008;
+        public static final int logintw=0x7f020009;
+        public static final int logo_inicial=0x7f02000a;
     }
     public static final class id {
-        public static final int ImagenB_new=0x7f0a000a;
-        public static final int Login_logo=0x7f0a0008;
-        public static final int action_settings=0x7f0a0015;
-        public static final int autoCompleteTextView1=0x7f0a000d;
-        public static final int button1=0x7f0a0006;
+        public static final int CustomG_Name=0x7f0a0000;
+        public static final int ImagenB_new=0x7f0a0010;
+        public static final int TextView01=0x7f0a001c;
+        public static final int action_forgot_password=0x7f0a001f;
+        public static final int action_settings=0x7f0a001e;
         public static final int button2=0x7f0a0007;
-        public static final int editText1=0x7f0a0000;
-        public static final int editText2=0x7f0a0013;
+        public static final int editText2=0x7f0a0017;
+        public static final int email=0x7f0a000b;
         public static final int imageButton1=0x7f0a0003;
         public static final int imageButton2=0x7f0a0004;
         public static final int imageView1=0x7f0a0002;
-        public static final int linearLayout1=0x7f0a0009;
-        public static final int listView1=0x7f0a000b;
-        public static final int newgoal_calendar=0x7f0a0010;
-        public static final int newgoal_date=0x7f0a000e;
-        public static final int newgoal_type=0x7f0a000c;
-        public static final int spinner1=0x7f0a0014;
+        public static final int linearLayout1=0x7f0a000f;
+        public static final int listView1=0x7f0a0011;
+        public static final int login=0x7f0a000d;
+        public static final int login_form=0x7f0a000a;
+        public static final int login_status=0x7f0a0008;
+        public static final int login_status_message=0x7f0a0009;
+        public static final int newgoal_bsiguiente=0x7f0a001a;
+        public static final int newgoal_calendar=0x7f0a0015;
+        public static final int newgoal_date=0x7f0a001b;
+        public static final int newgoal_dgoal=0x7f0a0013;
+        public static final int newgoal_type=0x7f0a0019;
+        public static final int password=0x7f0a000c;
+        public static final int sign_in_button=0x7f0a000e;
+        public static final int spinner1=0x7f0a0018;
+        public static final int start_bcorreo=0x7f0a0006;
+        public static final int start_logo=0x7f0a001d;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a0005;
-        public static final int textView3=0x7f0a000f;
-        public static final int textView4=0x7f0a0011;
-        public static final int textView5=0x7f0a0012;
+        public static final int textView3=0x7f0a0012;
+        public static final int textView4=0x7f0a0014;
+        public static final int textView5=0x7f0a0016;
     }
     public static final class layout {
         public static final int activity_custom_goal=0x7f030000;
         public static final int activity_login=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_new_goal=0x7f030003;
+        public static final int activity_start=0x7f030004;
     }
     public static final class menu {
         public static final int custom_goal=0x7f090000;
@@ -75,20 +89,34 @@ public final class R {
         public static final int new_goal=0x7f090003;
     }
     public static final class string {
+        public static final int action_forgot_password=0x7f060017;
         public static final int action_settings=0x7f060001;
+        public static final int action_sign_in_register=0x7f060015;
+        public static final int action_sign_in_short=0x7f060016;
         public static final int app_name=0x7f060000;
         public static final int boton_login=0x7f060010;
         public static final int boton_ok=0x7f06000d;
         public static final int boton_omitir=0x7f06000e;
+        public static final int boton_siguiente=0x7f060011;
+        public static final int error_field_required=0x7f06001c;
+        public static final int error_incorrect_password=0x7f06001b;
+        public static final int error_invalid_email=0x7f060019;
+        public static final int error_invalid_password=0x7f06001a;
         public static final int hello_world=0x7f060002;
+        public static final int login_progress_signing_in=0x7f060018;
         public static final int pregunta_como_ahorras=0x7f06000f;
         public static final int pregunta_costo=0x7f060008;
         public static final int pregunta_cuando=0x7f060007;
         public static final int pregunta_nombre=0x7f06000b;
         public static final int pregunta_sueno=0x7f060006;
+        /**  Strings related to login 
+         */
+        public static final int prompt_email=0x7f060013;
+        public static final int prompt_password=0x7f060014;
         public static final int signo_pesos=0x7f060009;
         public static final int texto_explicacionNombre=0x7f06000c;
         public static final int title_activity_custom_goal=0x7f06000a;
+        public static final int title_activity_login=0x7f060012;
         public static final int title_activity_main=0x7f060004;
         public static final int title_activity_new_goal=0x7f060003;
         public static final int titulo_nuevoSueno=0x7f060005;
@@ -97,11 +125,13 @@ public final class R {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
@@ -120,5 +150,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int LoginFormContainer=0x7f080002;
     }
 }

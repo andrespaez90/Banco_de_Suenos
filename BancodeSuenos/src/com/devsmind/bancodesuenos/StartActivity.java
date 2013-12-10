@@ -1,6 +1,7 @@
 package com.devsmind.bancodesuenos;
 
 import com.bd.persistencia.PersistManager;
+import com.db.Activities.LoginActivity;
 import com.db.Activities.NewGoalActivity;
 
 import android.location.Address;
@@ -10,28 +11,32 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 
-public class LoginActivity extends Activity implements OnClickListener {
-
+public class StartActivity extends Activity implements OnClickListener {
+ 
 	
 	private ImageView Logo;
+	private Button IngresarCorreo;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_start);
         Init();
         addListeners();
     }
 
     private void Init() {
-		Logo = (ImageView) findViewById(R.id.Login_logo);
+		Logo = (ImageView) findViewById(R.id.start_logo);
+		IngresarCorreo = (Button) findViewById(R.id.start_bcorreo);
 	}
 
 
     private void addListeners() {
 		Logo.setOnClickListener(this);
+		IngresarCorreo.setOnClickListener(this);
 	}
 
 	@Override
@@ -43,16 +48,19 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View view) {
-		if(view.getId() == Logo.getId()){
+		if (view.getId() == Logo.getId()){
 			ValidateUser();
-			//Ingreso a la App
 			return;
 		}
-		
+		if (view.getId() == IngresarCorreo.getId()){
+			Intent i = new Intent(this,LoginActivity.class);
+			startActivity(i);
+			return;
+		}
 	}
 
 	private void ValidateUser() {
-		PersistManager pm = new PersistManager(LoginActivity.this);
+		PersistManager pm = new PersistManager(StartActivity.this);
     	if(pm.getAllRegisters("User").size()==0){
     		//Crear Usuario falso
     		Intent i = new Intent(this, NewGoalActivity.class);

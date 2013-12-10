@@ -1,5 +1,6 @@
 <resources>
 
-    <color name="blue_title">#5290D7</color>
+    <color name="blue_title">#00AFEF</color>
+    <color name="blue_subtitle">#B3E1F4</color>
 
 </resources>

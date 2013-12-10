@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.devsmind.bancodesuenos.LoginActivity"
+            android:name="com.devsmind.bancodesuenos.StartActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,8 +31,13 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name="com.devsmind.bancodesuenos.CustomGoalActivity"
+            android:name="com.db.Activities.CustomGoalActivity"
             android:label="@string/title_activity_custom_goal" >
+        </activity>
+        <activity
+            android:name="com.db.Activities.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
     </application>
 

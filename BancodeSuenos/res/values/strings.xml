@@ -18,5 +18,6 @@
     <string name="boton_omitir">Omitir</string>
     <string name="pregunta_como_ahorras">¿Cómo lo puedes ahorrar?</string>
     <string name="boton_login">Ingresa con tu correo</string>
+    <string name="boton_siguiente">Siguiente</string>
 
 </resources>
