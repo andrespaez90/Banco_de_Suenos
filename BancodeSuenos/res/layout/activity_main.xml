@@ -20,7 +20,7 @@
         android:gravity="center" >
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/start_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/blue_title"

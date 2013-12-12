@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,22 +20,25 @@
         android:layout_marginTop="63dp"
         android:src="@drawable/logo_inicial" />
 
-    <ImageButton
-        android:id="@+id/imageButton1"
+    <com.facebook.widget.LoginButton
+        android:id="@+id/start_facebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/start_logo"
         android:layout_alignRight="@+id/start_logo"
         android:layout_below="@+id/start_logo"
         android:layout_marginTop="55dp"
-        android:src="@drawable/loginface" />
+        android:src="@drawable/loginface"
+        facebook:confirm_logout="false"
+        facebook:fetch_user_info="true" />
 
     <Button
-        android:id="@+id/start_bcorreo"
+        android:id="@+id/start_correo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageButton1"
-        android:layout_alignRight="@+id/imageButton1"
-        android:layout_below="@+id/imageButton1"
+        android:layout_alignLeft="@+id/start_facebook"
+        android:layout_alignRight="@+id/start_facebook"
+        android:layout_below="@+id/start_facebook"
         android:layout_marginTop="14dp"
         android:text="@string/boton_login" />
 

@@ -7,11 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".CustomGoalActivity" >
+    tools:context=".InfoGoalActivity" >
 
     
     <EditText
-        android:id="@+id/CustomG_Name"
+        android:id="@+id/newgoal_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -25,77 +25,76 @@
     </EditText>
  
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/info_img"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:layout_alignLeft="@+id/CustomG_Name"
-        android:layout_alignRight="@+id/CustomG_Name"
-        android:layout_below="@+id/CustomG_Name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/newgoal_save"
         android:layout_marginTop="27dp"
-        android:src="@android:drawable/progress_indeterminate_horizontal" />
+        android:src="@drawable/paisaje" />
 
     <ImageButton
-        android:id="@+id/imageButton1"
+        android:id="@+id/info_gridphoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
+        android:layout_alignRight="@+id/info_img"
+        android:layout_below="@+id/info_img"
         android:layout_marginRight="43dp"
         android:src="@android:drawable/ic_menu_search" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/imageButton1"
-        android:layout_marginRight="43dp"
-        android:src="@android:drawable/ic_menu_camera" />
-
-    <TextView
+    <EditText
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_alignRight="@+id/imageView1"
-        android:layout_below="@+id/imageButton1"
-        android:layout_marginTop="18dp"
-        android:text="@string/texto_explicacionNombre"
+        android:layout_alignLeft="@+id/info_img"
+        android:layout_alignRight="@+id/info_img"
+        android:layout_below="@+id/info_camera"
+        android:layout_marginTop="10dp"
+        android:hint="@string/texto_explicacionNombre"
+        android:inputType="textMultiLine"
         android:textAlignment="center"
         android:textColor="@color/blue_title" />
 
     <Button
-        android:id="@+id/start_bcorreo"
+        android:id="@+id/info_bskip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageButton1"
-        android:layout_alignRight="@+id/imageButton2"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="14dp"
-        android:gravity="center"
-        android:text="@string/boton_ok"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/start_bcorreo"
-        android:layout_alignBottom="@+id/start_bcorreo"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_toLeftOf="@+id/start_bcorreo"
+        android:layout_alignBottom="@+id/info_bnext"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="63dp"
         android:text="@string/boton_omitir"
         android:textAlignment="textStart" />
-
+    
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/imageButton2"
-        android:layout_marginTop="26dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
         android:gravity="center"
         android:text="@string/pregunta_nombre"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/info_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/info_gridphoto"
+        android:layout_toLeftOf="@+id/info_gridphoto"
+        android:src="@android:drawable/ic_menu_camera" />
+
+    <Button
+        android:id="@+id/info_bnext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/info_camera"
+        android:layout_alignRight="@+id/info_gridphoto"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text="@string/boton_ok"
+        android:textAlignment="center" />
 
 </RelativeLayout>

@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
      <string-array name="type_goal">
-        <item>Viajar</item>
-        <item>Comprar</item>
+        <item>Aprender</item>
+        <item>Aprender a bailar</item>
+        <item>Aprender a cocinar</item>
+        <item>Aprender a tocar guitarra</item>
+        <item>Aprender Ingles</item>
         <item>Estudiar</item>
+        <item>Estudiar Frances</item>
+        <item>Estudiar Inglés</item>
+        <item>Estudiar una Maestría</item>
+        <item>Viajar</item>
+        <item>Viajar a Inglaterra</item>
+        <item>Viajar a Cacún</item>
+        <item>Viajar a Paris</item>
+        <item>Viajar a Alemania</item>
+        <item>Paseo por el caribe</item>
+        <item>Conocer</item>
+        <item>Conocer la playa</item>
+        <item>Conocer la mar</item>
+        <item>Conocer la nieve</item>
+        <item>Conocer la playa</item>
+        <item>Comprar</item>
+        <item>Compara Carro</item>
+        <item>Compara Casa</item>
+        <item>Comprar Celular</item>
+        <item>Comprar un Regalo</item>
         <item>Ahorrar</item>
+        <item>Boda</item>
+        <item>Matrimonio</item>
     </string-array>
     
      <string-array name="type_save">
@@ -14,4 +38,34 @@
         <item>Otro</item>
     </string-array>
     
+      <string-array name="photo_ids">
+        <item>@drawable/bailar</item>
+        <item>@drawable/carro1</item>
+        <item>@drawable/carro2</item>
+        <item>@drawable/ciudad</item>
+        <item>@drawable/ciudad1</item>
+        <item>@drawable/estudiar</item>
+        <item>@drawable/estudiar1</item>
+        <item>@drawable/estudiar2</item>
+        <item>@drawable/estudiar3</item>
+        <item>@drawable/estudiar4</item>
+        <item>@drawable/negocio</item>
+        <item>@drawable/paisaje</item>
+        <item>@drawable/paisaje1</item>
+        <item>@drawable/paisaje2</item>
+        <item>@drawable/paisaje5</item>
+        <item>@drawable/paisaje6</item>
+        <item>@drawable/paisaje7</item>
+        <item>@drawable/paisaje8</item>
+        <item>@drawable/playa</item>
+        <item>@drawable/playa2</item>
+        <item>@drawable/viajar1</item>
+        <item>@drawable/viajar2</item>
+        <item>@drawable/viajar2</item>
+        <item>@drawable/viajar4</item>
+        <item>@drawable/viajar5</item>
+        <item>@drawable/viaje6</item>
+        <item>@drawable/viaje7</item>
+    </string-array>
+     
 </resources>

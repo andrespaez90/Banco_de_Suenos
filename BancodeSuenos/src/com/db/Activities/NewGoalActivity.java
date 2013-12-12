@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
@@ -29,7 +31,6 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 	private ImageButton Button_Calendar;
 	private TextView Date;
 	
-	private String Type_Goal;		//Tipo de Sueño
 	private String DGoal;			//Descripción del sueño
 	
 	
@@ -42,6 +43,8 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 	}
 
 	private void Init() {
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,getResources().getStringArray(R.array.type_goal));
+		((AutoCompleteTextView)findViewById(R.id.newgoal_dgoal)).setAdapter(adapter);
 		Button_Calendar = (ImageButton) findViewById(R.id.newgoal_calendar);
 		final Calendar calendar = Calendar.getInstance();
 		myYear = calendar.get(Calendar.YEAR);
@@ -95,8 +98,7 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		}
 		if(v.getId() == Button_Next.getId()){
 			ValidateDate();
-			Intent i = new Intent(this, CustomGoalActivity.class);
-			i.putExtra("Type", Type_Goal);
+			Intent i = new Intent(this, InfoGoalActivity.class);
 			i.putExtra("Goal", DGoal);
 			startActivity(i);
 			return;
@@ -111,7 +113,6 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 
 	private void DataCatcher() {
 		DGoal = ((TextView)findViewById(R.id.newgoal_dgoal)).getText().toString();
-		Type_Goal = ((Spinner)findViewById(R.id.newgoal_type)).getSelectedItem().toString();
 		
 	}
 
