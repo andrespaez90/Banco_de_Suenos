@@ -9,6 +9,7 @@ import com.devsmind.bancodesuenos.R;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,6 +27,7 @@ public class PhotosActivity extends FragmentActivity implements PhotoDialog.Dial
 
 	private GridView gridView;
     private GridViewAdapter customGridAdapter;
+    private int Position;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class PhotosActivity extends FragmentActivity implements PhotoDialog.Dial
         customGridAdapter = new GridViewAdapter(this, R.layout.row_grid, getData());
         gridView.setAdapter(customGridAdapter);
         addListeners();
+        Position =0;
     }
  
     private void addListeners() {
@@ -45,6 +48,7 @@ public class PhotosActivity extends FragmentActivity implements PhotoDialog.Dial
     			 TypedArray imgs = getResources().obtainTypedArray(R.array.photo_ids);
     			 Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
     	                    imgs.getResourceId(position, -1));
+    			 Position = position;
     			 PhotoDialog dialogo = new PhotoDialog(bitmap);
                  dialogo.show(fragmentManager, "tagPersonalizado");
                  }
@@ -55,13 +59,15 @@ public class PhotosActivity extends FragmentActivity implements PhotoDialog.Dial
     
     @Override
 	public void onDialogPositiveClick(DialogFragment dialog) {
-		// TODO Auto-generated method stub
+    	Intent returnIntent = new Intent();
+		returnIntent.putExtra("img",Position);
+		setResult(RESULT_OK,returnIntent);     
+		finish();
 		
 	}
 
 	@Override
 	public void onDialogNegativeClick(DialogFragment dialog) {
-		// TODO Auto-generated method stub
 		
 	}
     

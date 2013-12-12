@@ -8,6 +8,9 @@ import com.devsmind.bancodesuenos.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -96,13 +99,23 @@ public class InfoGoalActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		if(v.getId() == GridPhotos.getId()){
 			Intent i = new Intent(this,PhotosActivity.class);
-			startActivity(i);
+			startActivityForResult(i, v.getId());
 			return;
 		}else if(v.getId() == Next.getId()){
 			Intent i = new Intent(this,MainActivity.class);
 			startActivity(i);
 		}
-		
+	}
+	
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(GridPhotos.getId() == requestCode && resultCode == RESULT_OK ){
+			 TypedArray imgs = getResources().obtainTypedArray(R.array.photo_ids);
+			 Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+					 imgs.getResourceId(data.getIntExtra("img", 0), -1));
+			 Imagen.setImageBitmap(bitmap);
+		}
 	}
 
 }

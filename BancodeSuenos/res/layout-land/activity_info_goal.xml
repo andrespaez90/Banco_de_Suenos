@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/info_camera"
-        android:layout_alignRight="@+id/start_facebook"
+        android:layout_alignRight="@+id/info_gridphoto"
         android:layout_alignTop="@+id/info_bskip"
         android:layout_marginTop="16dp"
         android:gravity="center"

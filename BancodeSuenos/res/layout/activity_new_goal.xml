@@ -60,14 +60,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
-        android:layout_below="@+id/newgoal_save"
+        android:layout_below="@+id/newgoal_value"
         android:layout_marginTop="15dp"
         android:text="@string/pregunta_como_ahorras"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/newgoal_value"
+        android:id="@+id/newgoal_saving"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
@@ -79,10 +79,10 @@
         android:inputType="number" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/newgoal_t_saving"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/newgoal_value"
+        android:layout_alignBottom="@+id/newgoal_saving"
         android:layout_alignLeft="@+id/newgoal_calendar"
         android:layout_marginBottom="0dp"
         android:entries="@array/type_save" />
@@ -91,8 +91,8 @@
         android:id="@+id/newgoal_bsiguiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/spinner1"
-        android:layout_below="@+id/newgoal_value"
+        android:layout_alignRight="@+id/newgoal_t_saving"
+        android:layout_below="@+id/newgoal_saving"
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/textView2"
         android:background="@color/blue_title"
@@ -100,7 +100,7 @@
         android:textColor="#fff" />
 
     <EditText
-        android:id="@+id/newgoal_save"
+        android:id="@+id/newgoal_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
@@ -138,10 +138,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
-        android:layout_alignRight="@+id/spinner1"
+        android:layout_alignRight="@+id/newgoal_t_saving"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="15dp"
         android:autoText="false"
         android:ems="10" />
+
+    <Button
+        android:id="@+id/newgoal_calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/newgoal_bsiguiente"
+        android:layout_alignLeft="@+id/newgoal_saving"
+        android:layout_alignRight="@+id/textView2"
+        android:text="@string/boton_calcular"
+        android:background="@color/blue_title"
+        android:textColor="#fff"  />
 
 </RelativeLayout>

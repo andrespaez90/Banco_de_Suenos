@@ -72,15 +72,15 @@
         android:id="@+id/newgoal_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/newgoal_save"
-        android:layout_alignBottom="@+id/newgoal_save"
+        android:layout_alignBaseline="@+id/newgoal_saving"
+        android:layout_alignBottom="@+id/newgoal_saving"
         android:layout_alignRight="@+id/newgoal_calendar"
         android:ems="10"
         android:hint="@string/signo_pesos"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/newgoal_save"
+        android:id="@+id/newgoal_saving"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
@@ -91,12 +91,12 @@
         android:inputType="number" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/newgoal_t_saving"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/newgoal_bsiguiente"
-        android:layout_alignLeft="@+id/newgoal_save"
-        android:layout_alignRight="@+id/newgoal_save"
+        android:layout_alignLeft="@+id/newgoal_saving"
+        android:layout_alignRight="@+id/newgoal_saving"
         android:entries="@array/type_save" />
 
     <TextView
@@ -115,7 +115,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/newgoal_save"
+        android:layout_above="@+id/newgoal_saving"
         android:layout_alignLeft="@+id/textView3"
         android:text="@string/pregunta_costo"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -141,5 +141,14 @@
         android:background="@color/blue_title"
         android:text="@string/boton_siguiente"
         android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/newgoal_calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/newgoal_bsiguiente"
+        android:layout_alignBottom="@+id/newgoal_bsiguiente"
+        android:layout_toLeftOf="@+id/newgoal_bsiguiente"
+        android:text="@string/boton_calcular" />
 
 </RelativeLayout>
