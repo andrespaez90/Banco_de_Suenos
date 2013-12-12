@@ -41,7 +41,6 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 	private LoginButton LoginFacebook;
     private ProfilePictureView profilePictureView;
     private PendingAction pendingAction = PendingAction.NONE;    
-    private ImageView perfil;
     private final String PENDING_ACTION_BUNDLE_KEY = "com.facebook.samples.hellofacebook:PendingAction";
     //Facebook bd
     private GraphUser usuario;
@@ -222,13 +221,10 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
         if (enableButtons && usuario != null) {
             profilePictureView.setProfileId(usuario.getId());
             nombre=usuario.getFirstName();
+            apellido=usuario.getLastName();
             ImageView fbImage = ( ( ImageView)profilePictureView.getChildAt( 0));
-            Bitmap    bitmap  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
-            perfil.setImageBitmap(bitmap);
-        } else {
-            profilePictureView.setProfileId(null);
-            greeting.setText(null);
-        }
+            fotoPerfil  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
+        } 
     }
 
     private void handlePendingAction() {
