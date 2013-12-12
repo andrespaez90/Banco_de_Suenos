@@ -117,7 +117,10 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 	}
 
 	private void ValueCalculator() {
-		
+		DataCatcher();
+		if(Value.equals("")){
+			
+		}
 		
 	}
 
@@ -149,7 +152,7 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		DGoal = ((TextView)findViewById(R.id.newgoal_dgoal)).getText().toString();
 		Value = ((TextView)findViewById(R.id.newgoal_value)).getText().toString();
 		Saving = ((TextView)findViewById(R.id.newgoal_saving)).getText().toString();
-		T_Saving = ((Spinner)findViewById(R.id.newgoal_saving)).getSelectedItem().toString();;
+		T_Saving = ((Spinner)findViewById(R.id.newgoal_saving)).getSelectedItem().toString();
 	}
 
 	private void CuadroDialogo(String Tittle,String mensaje){
