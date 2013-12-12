@@ -13,7 +13,7 @@ public class PersistManager extends SQLiteOpenHelper{
 		super(context,"DataBase",null,1);
 	}
 
-	@Override
+	@Override   
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("CREATE TABLE User (name TEXT, mail TEXT, pass TEXT)");		
 	}
