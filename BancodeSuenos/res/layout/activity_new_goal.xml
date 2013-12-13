@@ -1,5 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+<ScrollView android:id="@+id/ScrlView" android:layout_width="fill_parent" android:layout_height="fill_parent" >
+<RelativeLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background0_tilde"
@@ -7,7 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".NewGoalActivity" >
+     >
 
     <TextView
         android:id="@+id/textView1"
@@ -94,6 +98,7 @@
         android:layout_alignRight="@+id/newgoal_t_saving"
         android:layout_below="@+id/newgoal_saving"
         android:layout_marginTop="25dp"
+        android:layout_marginLeft="15px"
         android:layout_toRightOf="@+id/textView2"
         android:background="@color/blue_title"
         android:text="@string/boton_siguiente"
@@ -150,9 +155,12 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/newgoal_bsiguiente"
         android:layout_alignLeft="@+id/newgoal_saving"
+        android:layout_marginRight="10px"
         android:layout_alignRight="@+id/textView2"
         android:text="@string/boton_calcular"
         android:background="@color/blue_title"
         android:textColor="#fff"  />
 
 </RelativeLayout>
+</ScrollView>
+</LinearLayout>

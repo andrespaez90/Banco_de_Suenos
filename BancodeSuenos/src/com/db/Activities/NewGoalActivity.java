@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.YuvImage;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -52,19 +53,24 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		((AutoCompleteTextView)findViewById(R.id.newgoal_dgoal)).setAdapter(adapter);
 		Button_Calendar = (ImageButton) findViewById(R.id.newgoal_calendar);
 		Calculate = (Button) findViewById(R.id.newgoal_calculate);
+		Button_Next = (Button) findViewById(R.id.newgoal_bsiguiente);
+		TodayDate();
+	}
+
+	private void TodayDate(){
 		final Calendar calendar = Calendar.getInstance();
 		myYear = calendar.get(Calendar.YEAR);
 		myMonth = calendar.get(Calendar.MONTH);
 		myDay = calendar.get(Calendar.DAY_OF_MONTH);
 		Date = (TextView) findViewById(R.id.newgoal_date);
 		Date.setText(myDay+"/"+(myMonth+1)+"/"+myYear);
-		Button_Next = (Button) findViewById(R.id.newgoal_bsiguiente);
+		
 	}
-
 	
 	private void addListeners() {
 		Button_Calendar.setOnClickListener(this);
 		Button_Next.setOnClickListener(this);
+		Calculate.setOnClickListener(this);
 	}
 	
 	@Override
@@ -103,7 +109,12 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		  return;
 		}
 		if(v.getId() == Calculate.getId()){
-			ValueCalculator();
+			try {
+				ValueCalculator();
+				
+			} catch (Exception e) {
+				CuadroDialogo("Error!!", "Ingrese Datos válidos");
+			}
 		}
 		if(v.getId() == Button_Next.getId()){
 			if(ValidateDate()){
@@ -116,12 +127,45 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		
 	}
 
-	private void ValueCalculator() {
+	private void ValueCalculator() throws Exception{
 		DataCatcher();
-		if(Value.equals("")){
-			
+		if(Value.equals("") && Saving.equals("") && istoday()){
+			CuadroDialogo("Ayudanos!", "Agrega al menos dos datos");
+			return;
+		}else if(!Value.equals("") && !Saving.equals("") && istoday() ){
+			if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[0])){
+				int Number = Integer.parseInt(Value) / Integer.parseInt(Saving);
+				ChangeDate(0, Number);
+				CuadroDialogo("Cambio!", "Hemos cambiado la fecha de tu sueño");
+			}
 		}
 		
+	}
+
+	public void ChangeDate(int type, int value){
+		TodayDate();
+		switch (type) {
+		case 0:
+			myMonth = myMonth + value;
+			while(myMonth > 12){
+					myMonth-=12;
+					myYear++;
+			}
+			Date.setText(myDay+"/"+myMonth+"/"+myYear); 
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	private boolean istoday() {
+		final Calendar calendar = Calendar.getInstance();
+		if(myYear == calendar.get(Calendar.YEAR)
+				&& myMonth == calendar.get(Calendar.MONTH)
+				 && myDay == calendar.get(Calendar.DAY_OF_MONTH))
+			return true;
+		return false;
 	}
 
 	private boolean ValidateDate() {
@@ -152,7 +196,7 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		DGoal = ((TextView)findViewById(R.id.newgoal_dgoal)).getText().toString();
 		Value = ((TextView)findViewById(R.id.newgoal_value)).getText().toString();
 		Saving = ((TextView)findViewById(R.id.newgoal_saving)).getText().toString();
-		T_Saving = ((Spinner)findViewById(R.id.newgoal_saving)).getSelectedItem().toString();
+		T_Saving = ((Spinner)findViewById(R.id.newgoal_t_saving)).getSelectedItem().toString();
 	}
 
 	private void CuadroDialogo(String Tittle,String mensaje){
