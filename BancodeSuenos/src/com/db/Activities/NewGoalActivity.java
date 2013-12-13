@@ -117,10 +117,12 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 			}
 		}
 		if(v.getId() == Button_Next.getId()){
-			if(ValidateDate()){
+			if(ValidateDate() && ValidateInformation()){
 				Intent i = new Intent(this, InfoGoalActivity.class);
 				i.putExtra("Goal", DGoal);
 				startActivity(i);
+			}else{
+				CuadroDialogo("Datos incorrectos:(!", "Los datos que ingresaste no corresponden, si deseas que te ayudemos selecciona calcular");
 			}
 			return;
 		}
@@ -132,17 +134,38 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		if(Value.equals("") && Saving.equals("") && istoday()){
 			CuadroDialogo("Ayudanos!", "Agrega al menos dos datos");
 			return;
-		}else if(!Value.equals("") && !Saving.equals("") && istoday() ){
+		}else if(!Value.equals("") && !Saving.equals("") && !istoday()){
+			ValidateInformation();
+		}
+		else if(!Value.equals("") && !Saving.equals("") && istoday() ){
 			if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[0])){
 				int Number = Integer.parseInt(Value) / Integer.parseInt(Saving);
-				ChangeDate(0, Number);
+				 Date.setText(NewDate(0, Number));
 				CuadroDialogo("Cambio!", "Hemos cambiado la fecha de tu sueño");
 			}
 		}
 		
 	}
 
-	public void ChangeDate(int type, int value){
+	private boolean ValidateInformation() {
+		//Ahorro Mensual
+		if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[0])){
+			int Number = Integer.parseInt(Value) / Integer.parseInt(Saving);
+			String date = NewDate(0, Number);
+			if(date.equals(Date.getText().toString()) || isLowerDate(date)){
+				
+			}
+				return true;
+		}
+		return false;
+	}
+
+	private boolean isLowerDate(String date2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String NewDate(int type, int value){
 		TodayDate();
 		switch (type) {
 		case 0:
@@ -151,12 +174,12 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 					myMonth-=12;
 					myYear++;
 			}
-			Date.setText(myDay+"/"+myMonth+"/"+myYear); 
-			break;
+			return (myDay+"/"+myMonth+"/"+myYear); 
 
 		default:
 			break;
 		}
+		return null;
 	}
 	
 	private boolean istoday() {

@@ -3,6 +3,7 @@ package com.devsmind.bancodesuenos;
 import com.bd.persistencia.PersistManager;
 import com.db.Activities.LoginActivity;
 import com.db.Activities.NewGoalActivity;
+import com.db.Activities.NewGoalActivity;
 import com.facebook.AppEventsLogger;
 import com.facebook.FacebookAuthorizationException;
 import com.facebook.FacebookOperationCanceledException;
@@ -78,8 +79,17 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        
+        //facebook
+        uiHelper = new UiLifecycleHelper(this, callback);
+        uiHelper.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            String name = savedInstanceState.getString(PENDING_ACTION_BUNDLE_KEY);
+            pendingAction = PendingAction.valueOf(name);
+        }
+        setContentView(R.layout.activity_start);
+        Init();
+        addListeners();
+                
         //facebook
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
@@ -88,9 +98,6 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
             String name = savedInstanceState.getString(PENDING_ACTION_BUNDLE_KEY);
             pendingAction = PendingAction.valueOf(name);
         }
-        setContentView(R.layout.activity_start);
-        Init();
-        addListeners();
 
         LoginFacebook.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
             @Override
@@ -98,11 +105,14 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
                 StartActivity.this.usuario = user;
                 updateUI();
                 handlePendingAction();
-                
+                Intent i=new Intent(getApplicationContext(),NewGoalActivity.class);
+
             }
         });
-
+            
+        
     }
+
 
     private void Init() {
 		Logo = (ImageView) findViewById(R.id.start_logo);
@@ -115,7 +125,10 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     private void addListeners() {
 		Logo.setOnClickListener(this);
 		IngresarCorreo.setOnClickListener(this);
+
 		//LoginFacebook.setOnClickListener(this);
+
+		LoginFacebook.setOnClickListener(this);
         
 	}
     
@@ -216,6 +229,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
         boolean enableButtons = (session != null && session.isOpened());
 
         if (enableButtons && usuario != null) {
+
         	
 //            profilePictureView.setProfileId(usuario.getId());
             nombre=usuario.getFirstName();
@@ -224,6 +238,13 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 //            fotoPerfil  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
             Intent i=new Intent(getApplicationContext(),NewGoalActivity.class);
             startActivity(i);
+
+            profilePictureView.setProfileId(usuario.getId());
+            nombre=usuario.getFirstName();
+            apellido=usuario.getLastName();
+            ImageView fbImage = ( ( ImageView)profilePictureView.getChildAt( 0));
+            fotoPerfil  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
+
         } 
     }
 
