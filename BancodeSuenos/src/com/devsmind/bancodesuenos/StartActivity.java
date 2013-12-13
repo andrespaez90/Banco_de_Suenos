@@ -13,7 +13,7 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.FacebookDialog;
 import com.facebook.widget.LoginButton;
-import com.facebook.widget.ProfilePictureView;
+import com.facebook.widget.ProfilePictureView; 
 
 import android.location.Address;
 import android.os.Bundle;

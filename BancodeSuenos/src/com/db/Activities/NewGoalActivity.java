@@ -113,7 +113,7 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 				ValueCalculator();
 				
 			} catch (Exception e) {
-				CuadroDialogo("Error!!", "Ingrese Datos válidos");
+				CuadroDialogo("Datos incorrectos:'(", "Ingresa Datos válidos");
 			}
 		}
 		if(v.getId() == Button_Next.getId()){
@@ -122,7 +122,7 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 				i.putExtra("Goal", DGoal);
 				startActivity(i);
 			}else{
-				CuadroDialogo("Datos incorrectos:(!", "Los datos que ingresaste no corresponden, si deseas que te ayudemos selecciona calcular");
+				CuadroDialogo("Datos incorrectos:'(", "Los datos que ingresaste no corresponden, si deseas que te ayudemos selecciona calcular");
 			}
 			return;
 		}
@@ -135,12 +135,25 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 			CuadroDialogo("Ayudanos!", "Agrega al menos dos datos");
 			return;
 		}else if(!Value.equals("") && !Saving.equals("") && !istoday()){
-			ValidateInformation();
-		}
-		else if(!Value.equals("") && !Saving.equals("") && istoday() ){
+			if(!ValidateInformation()){
+				TodayDate();
+				ValueCalculator();
+				return;
+			}
+		}else if(!Value.equals("") && !Saving.equals("") && istoday() ){
+			int Number = Integer.parseInt(Value) / Integer.parseInt(Saving);
 			if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[0])){
-				int Number = Integer.parseInt(Value) / Integer.parseInt(Saving);
 				 Date.setText(NewDate(0, Number));
+				 CuadroDialogo("Cambio!", "Hemos cambiado la fecha de tu sueño");
+			}else if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[2])){
+				Calendar c1 = Calendar.getInstance(); 
+				c1.add(Calendar.DATE,Number);
+				Date.setText(c1.get(Calendar.DAY_OF_MONTH)+"/"+(c1.get(Calendar.MONTH)+1)+"/"+c1.get(Calendar.YEAR));
+				CuadroDialogo("Cambio!", "Hemos cambiado la fecha de tu sueño");
+			}else if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[1])){
+				Calendar c1 = Calendar.getInstance(); 
+				c1.add(Calendar.WEEK_OF_YEAR,Number);
+				Date.setText(c1.get(Calendar.DAY_OF_MONTH)+"/"+(c1.get(Calendar.MONTH)+1)+"/"+c1.get(Calendar.YEAR));
 				CuadroDialogo("Cambio!", "Hemos cambiado la fecha de tu sueño");
 			}
 		}
@@ -149,15 +162,28 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 
 	private boolean ValidateInformation() {
 		//Ahorro Mensual
+		int Number = Integer.parseInt(Value) / Integer.parseInt(Saving);
 		if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[0])){
-			int Number = Integer.parseInt(Value) / Integer.parseInt(Saving);
 			String date = NewDate(0, Number);
 			if(date.equals(Date.getText().toString()) || isLowerDate(date)){
-				
-			}
 				return true;
+			}	
+		}else if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[2])){
+			Calendar c1 = Calendar.getInstance(); 
+			c1.add(Calendar.DATE,Number);
+			String auxdate = (c1.get(Calendar.DAY_OF_MONTH)+"/"+(c1.get(Calendar.MONTH)+1)+"/"+c1.get(Calendar.YEAR));
+			if(auxdate.equals(Date.getText().toString())){
+				return true;
+			}
+		}else if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[1])){
+			Calendar c1 = Calendar.getInstance(); 
+			c1.add(Calendar.WEEK_OF_YEAR,Number);
+			String auxdate = (c1.get(Calendar.DAY_OF_MONTH)+"/"+(c1.get(Calendar.MONTH)+1)+"/"+c1.get(Calendar.YEAR));
+			if(auxdate.equals(Date.getText().toString())){
+				return true;
+			}
 		}
-		return false;
+		return true;
 	}
 
 	private boolean isLowerDate(String date2) {

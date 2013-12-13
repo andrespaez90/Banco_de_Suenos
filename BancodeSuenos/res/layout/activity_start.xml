@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="63dp"
-        android:src="@drawable/logo_inicial" />
+        android:src="@drawable/logo_bds" />
 
     <com.facebook.widget.LoginButton
         android:id="@+id/start_facebook"

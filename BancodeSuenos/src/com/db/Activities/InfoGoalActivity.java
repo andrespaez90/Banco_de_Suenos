@@ -46,7 +46,7 @@ public class InfoGoalActivity extends Activity implements OnClickListener{
 	private void Init() {
 		Intent i = getIntent();
 		Name = i.getStringExtra("Goal");
-		((TextView)findViewById(R.id.newgoal_save)).setText(Name);
+		((TextView)findViewById(R.id.info_namegoal)).setText(Name);
 		Imagen = (ImageView) findViewById(R.id.info_img);
 		SelectPhoto(Name);
 		Next = (Button) findViewById(R.id.info_bnext);
