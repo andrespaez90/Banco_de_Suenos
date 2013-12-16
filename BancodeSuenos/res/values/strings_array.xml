@@ -22,8 +22,8 @@
         <item>Conocer la nieve</item>
         <item>Conocer la playa</item>
         <item>Comprar</item>
-        <item>Compara Carro</item>
-        <item>Compara Casa</item>
+        <item>Comprar Carro</item>
+        <item>Comprar Casa</item>
         <item>Comprar Celular</item>
         <item>Comprar un Regalo</item>
         <item>Ahorrar</item>
@@ -67,5 +67,19 @@
         <item>@drawable/viaje6</item>
         <item>@drawable/viaje7</item>
     </string-array>
-     
+    
+    <string-array name="syncMens">
+        <item>0 a 1.000.000</item>
+        <item>1.000.001 a 5.000.000</item>
+        <item>5.000.001 a 10.000.000</item>
+        <item>10.000.001 a 20.000.000</item>
+        <item>20.000.001 a 40.000.000</item>
+    </string-array>
+    <string-array name="syncMensValue">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 </resources>

@@ -13,7 +13,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_new_goal">Un Nuevo sueño</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Mis Sueños</string>
     <string name="titulo_nuevoSueno">Ahora, cuentanos</string>
     <string name="pregunta_sueno">¿Cuál es tu sueño?</string>
     <string name="pregunta_cuando">¿Cuándo lo quieres lograr?</string>
@@ -24,12 +24,16 @@
     <string name="texto_explicacionNombre">Si deseas cuentanos el por qué de este sueño</string>
     <string name="boton_ok">Ok ></string>
     <string name="boton_omitir">Omitir</string>
-    <string name="pregunta_como_ahorras">¿Cómo lo puedes ahorrar?</string>
+    <string name="pregunta_como_ahorras">¿Cuánto lo puedes ahorrar?</string>
     <string name="boton_login">Ingresa con tu correo</string>
     <string name="boton_siguiente">Siguiente</string>
     <string name="title_activity_photos">Galería de Fotos</string>
     <string name="boton_confirmar">Confirmar</string>
     <string name="boton_cancelar">Cancelar</string>
     <string name="boton_calcular">Calcular</string>
+    <string name="title_activity_amigos">Mis Amigos</string>
+    <string name="title_activity_perfil">PerfilActivity</string>
+    <string name="title_activity_perfil_goal">Mi Sueño</string>
+    <string name="title_activity_config">Configuración de perfil</string>
 
 </resources>

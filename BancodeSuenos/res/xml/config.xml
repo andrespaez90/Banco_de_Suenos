@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="Perfil de Usuario" >
+        <EditTextPreference
+                android:title="Soñador"
+                android:summary="Ingrese el nombre del soñador"
+                android:key="prefUsername"/>
+    </PreferenceCategory>
+     
+    <PreferenceCategory android:title="Perfil Financiero" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefTC"
+            android:summary="Posee usted una tarjeta de credito"
+            android:title="Tarjeta de Credito" >
+        </CheckBoxPreference>
+ 
+        <ListPreference
+            android:key="prefIngresosMensuales"
+            android:entries="@array/syncMens"
+            android:summary="De cuanto son sus Ingresos Mensuales"
+            android:entryValues="@array/syncMensValue"
+            android:title="Ingresos Mensuales" />
+        <ListPreference
+            android:key="prefGastosMensuales"
+            android:entries="@array/syncMens"
+            android:summary="De cuanto son sus Gastos Mensuales"
+            android:entryValues="@array/syncMensValue"
+            android:title="Gastos Mensuales" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

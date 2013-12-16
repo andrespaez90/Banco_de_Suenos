@@ -5,7 +5,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Correo</string>
     <string name="prompt_password">Contraseña</string>
-    <string name="action_sign_in_register">Registrar</string>
+    <string name="action_sign_in_register">Registrar/Ingresar</string>
     <string name="action_sign_in_short">Ingresar</string>
     <string name="action_forgot_password">Olvidste tu constraseña</string>
     <string name="login_progress_signing_in">Signing in&#8230;</string>

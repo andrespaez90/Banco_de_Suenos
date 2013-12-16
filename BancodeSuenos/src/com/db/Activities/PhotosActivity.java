@@ -52,7 +52,6 @@ public class PhotosActivity extends FragmentActivity implements PhotoDialog.Dial
     			 PhotoDialog dialogo = new PhotoDialog(bitmap);
                  dialogo.show(fragmentManager, "tagPersonalizado");
                  }
-
          });	
 	}
 

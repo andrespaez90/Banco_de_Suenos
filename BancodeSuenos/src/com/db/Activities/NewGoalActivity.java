@@ -3,9 +3,15 @@ package com.db.Activities;
 import java.util.Calendar;
 
 import com.bd.Modelo.Goal;
+import com.bd.Modelo.ModeloFacade;
+import com.bds.BPO.BPOLocal;
+import com.bds.BPO.BPOServer;
+import com.devsmind.bancodesuenos.MainActivity;
 import com.devsmind.bancodesuenos.R;
+import com.devsmind.bancodesuenos.StartActivity;
 
 import android.os.Bundle;
+import android.provider.Settings;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -54,16 +60,16 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		Button_Calendar = (ImageButton) findViewById(R.id.newgoal_calendar);
 		Calculate = (Button) findViewById(R.id.newgoal_calculate);
 		Button_Next = (Button) findViewById(R.id.newgoal_bsiguiente);
-		TodayDate();
+		Date = (TextView) findViewById(R.id.newgoal_date);
+		Date.setText(TodayDate());
 	}
 
-	private void TodayDate(){
+	private String TodayDate(){
 		final Calendar calendar = Calendar.getInstance();
 		myYear = calendar.get(Calendar.YEAR);
 		myMonth = calendar.get(Calendar.MONTH);
 		myDay = calendar.get(Calendar.DAY_OF_MONTH);
-		Date = (TextView) findViewById(R.id.newgoal_date);
-		Date.setText(myDay+"/"+(myMonth+1)+"/"+myYear);
+		return(myDay+"/"+(myMonth+1)+"/"+myYear);
 		
 	}
 	
@@ -117,18 +123,61 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 			}
 		}
 		if(v.getId() == Button_Next.getId()){
-			if(ValidateDate() && ValidateInformation()){
-				Intent i = new Intent(this, InfoGoalActivity.class);
-				i.putExtra("Goal", DGoal);
-				startActivity(i);
-			}else{
-				CuadroDialogo("Datos incorrectos:'(", "Los datos que ingresaste no corresponden, si deseas que te ayudemos selecciona calcular");
-			}
+			if(BPOLocal.isNetwork(this)){
+				if(ValidateDate() && ValidateInformation()){
+					Intent i = new Intent(this, InfoGoalActivity.class);
+					i.putExtra("Goal", DGoal);
+					startActivityForResult(i,Button_Next.getId());
+				}else{
+					CuadroDialogo("Datos incorrectos:'(", "Los datos que ingresaste no corresponden, si deseas que te ayudemos selecciona calcular");
+				}
 			return;
+			}else{
+				 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				 builder.setTitle("Ups!");
+				 builder.setMessage("Internet no disponible, deseas activarlo")
+				    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							
+						}
+					})
+				 	.setPositiveButton("Aceptar",new  DialogInterface.OnClickListener() {
+				 		public void onClick(DialogInterface dialog, int id) {
+					    	Intent settings = new Intent(Settings.ACTION_WIFI_SETTINGS);
+							startActivityForResult(settings, 001);
+				 		}
+				 	});
+				 builder.create();
+				 builder.show();
+			}
 		}
 		
 	}
 
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		String[] info = new String[10];
+		if(requestCode == Button_Next.getId() && resultCode == Activity.RESULT_OK){
+			info[0] = DGoal;
+			info[1] = TodayDate();
+			info[2] = Date.getText().toString();
+			info[3] = Value;
+			info[4] = Saving;
+			info[5] = T_Saving;
+			info[6] = data.getStringExtra("Name");
+			info[7] = data.getStringExtra("Why");
+			info[8] = ModeloFacade.getUser().getMail();
+			int id = data.getIntExtra("ImgId", 0);
+			if(BPOServer.CreateGoal(info,id)){
+				finish();
+				Intent i =  new Intent(this,MainActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				startActivity(i);
+			}
+		}
+	}
+	
+	
 	private void ValueCalculator() throws Exception{
 		DataCatcher();
 		if(Value.equals("") && Saving.equals("") && istoday()){
@@ -148,16 +197,23 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 			}else if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[2])){
 				Calendar c1 = Calendar.getInstance(); 
 				c1.add(Calendar.DATE,Number);
-				Date.setText(c1.get(Calendar.DAY_OF_MONTH)+"/"+(c1.get(Calendar.MONTH)+1)+"/"+c1.get(Calendar.YEAR));
+				ChangeDate(c1);
+				Date.setText(myDay+"/"+myMonth+"/"+myYear);
 				CuadroDialogo("Cambio!", "Hemos cambiado la fecha de tu sueño");
 			}else if(T_Saving.equals(getResources().getStringArray(R.array.type_save)[1])){
 				Calendar c1 = Calendar.getInstance(); 
 				c1.add(Calendar.WEEK_OF_YEAR,Number);
-				Date.setText(c1.get(Calendar.DAY_OF_MONTH)+"/"+(c1.get(Calendar.MONTH)+1)+"/"+c1.get(Calendar.YEAR));
+				ChangeDate(c1);Date.setText(myDay+"/"+myMonth+"/"+myYear);
 				CuadroDialogo("Cambio!", "Hemos cambiado la fecha de tu sueño");
 			}
 		}
 		
+	}
+
+	private void ChangeDate(Calendar c1) {
+		myYear = c1.get(Calendar.YEAR);
+		myMonth =c1.get(Calendar.MONTH)+1;
+		myDay = c1.get(Calendar.DAY_OF_MONTH);
 	}
 
 	private boolean ValidateInformation() {
@@ -183,7 +239,7 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	private boolean isLowerDate(String date2) {
@@ -233,7 +289,7 @@ public class NewGoalActivity extends Activity implements OnClickListener{
 		if(myYear == calendar.get(Calendar.YEAR)){
 			if(myMonth < calendar.get(Calendar.MONTH))
 				return false;
-			if(myMonth > calendar.get(Calendar.MONTH)+1)
+			if(myMonth > calendar.get(Calendar.MONTH))
 				return true;
 			if(myDay > calendar.get(Calendar.DAY_OF_MONTH))
 				return true;

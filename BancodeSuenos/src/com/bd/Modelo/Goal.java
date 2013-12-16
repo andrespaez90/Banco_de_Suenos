@@ -6,60 +6,121 @@ import android.util.Pair;
 
 public class Goal {
 	
-	private String Type_Goal;						//Viajar, Ahorrar,Comprar
-	private String EspecificacionS;					// Paris, Fracia
-	private String Start_Date;						//Fecha en el que el sueño se cumple;
+	private String Id;
+	private String Type;						//Viajar, Ahorrar,Comprar
+	private String Date_Start;					// Paris, Fracia
+	private String Date_Done;						//Fecha en el que el sueño se cumple;
 	private String Value;							//Costo del Sueño
-	private String Save;							//Cuanto puedo ahorra
-	private int Type_Save;							//Diariamente,Mensualmente,Semanalmente, cuando Pueda
-	
-	
-	
-	private String Name;
-	private String Image;
+	private String Saving;							//Cuanto puedo ahorra
+	private String T_Saving;							//Diariamente,Mensualmente,Semanalmente, cuando Pueda
+	private String Nombre;
+	private int Img;
+	private String PathImg;
+	private String WhyGoal;
+	private String UserId;
 	private ArrayList<Pair<String, String>> Saves;  // Historial de Ahorros (Fecha y monto)
 	
 	
-	public Goal(String type_Goal, String especificacionS, String start_Date,
-			String value, String save, int type_Save) {
+	public Goal(String type_Goal, String date_start, String Date_done,
+			String value, String save, String type_Save) {
 		super();
-		Type_Goal = type_Goal;
-		EspecificacionS = especificacionS;
-		Start_Date = start_Date;
+		Type = type_Goal;
+		Date_Start = date_start;
+		Date_Done = Date_done;
 		Value = value;
-		Save = save;
-		Type_Save = type_Save;
+		Saving = save;
+		T_Saving = type_Save;
 		Saves = new ArrayList<Pair<String,String>>();
 	}
 
 
-	public String getType_Goal() {
-		return Type_Goal;
+	public Goal(String Id) {
+		super();
+		this.Id = Id;
+		Saves = new ArrayList<Pair<String,String>>();
+	}
+	
+	public void setAttribute(Pair<String, String> data) {
+		 if(data.first.equals("Type")){
+			 Type = data.second;
+             return;
+	     }
+	     if(data.first.equals("Date_Start")) {
+	    	 Date_Start = data.second;
+	             return;
+	     }
+	     if(data.first.equals("Date_Done")) {
+	    	 Date_Done = data.second;
+	             return;
+	     }
+	     if(data.first.equals("Value")) {
+	    	 Value = data.second;
+	             return;
+	     }
+	     if(data.first.equals("Saving")) {
+	    	 Saving = data.second;
+	             return;
+	     }
+	     if(data.first.equals("T_Saving")){
+	    	 T_Saving = data.second;
+	            return;
+	     } if(data.first.equals("Nombre")){
+	    	 Nombre = data.second;
+	            return;
+	     } if(data.first.equals("img")){
+	    	 Img = Integer.parseInt(data.second);
+	            return;
+	     }if(data.first.equals("PathImg")){
+	    	 PathImg = data.second;
+	            return;
+	     } if(data.first.equals("WhyGoal")){
+	    	 WhyGoal = data.second;
+	            return;
+	     } if(data.first.equals("UserId")){
+	    	 UserId = data.second;
+	            return;
+	     }
+		
+	}
+
+	
+	public String getId() {
+		return Id;
 	}
 
 
-	public void setType_Goal(String type_Goal) {
-		Type_Goal = type_Goal;
+	public void setId(String id) {
+		Id = id;
 	}
 
 
-	public String getEspecificacionS() {
-		return EspecificacionS;
+	public String getType() {
+		return Type;
 	}
 
 
-	public void setEspecificacionS(String especificacionS) {
-		EspecificacionS = especificacionS;
+	public void setType(String type) {
+		Type = type;
 	}
 
 
-	public String getStart_Date() {
-		return Start_Date;
+	public String getDate_Start() {
+		return Date_Start;
 	}
 
 
-	public void setStart_Date(String start_Date) {
-		Start_Date = start_Date;
+	public void setDate_Start(String date_Start) {
+		Date_Start = date_Start;
+	}
+
+
+	public String getDate_Done() {
+		return Date_Done;
+	}
+
+
+	public void setDate_Done(String date_Done) {
+		Date_Done = date_Done;
 	}
 
 
@@ -73,43 +134,73 @@ public class Goal {
 	}
 
 
-	public String getSave() {
-		return Save;
+	public String getSaving() {
+		return Saving;
 	}
 
 
-	public void setSave(String save) {
-		Save = save;
+	public void setSaving(String saving) {
+		Saving = saving;
 	}
 
 
-	public int getType_Save() {
-		return Type_Save;
+	public String getT_Saving() {
+		return T_Saving;
 	}
 
 
-	public void setType_Save(int type_Save) {
-		Type_Save = type_Save;
+	public void setT_Saving(String t_Saving) {
+		T_Saving = t_Saving;
 	}
 
 
-	public String getName() {
-		return Name;
+	public String getNombre() {
+		return Nombre;
 	}
 
 
-	public void setName(String name) {
-		Name = name;
+	public void setNombre(String nombre) {
+		Nombre = nombre;
 	}
 
 
-	public String getImage() {
-		return Image;
+	public int getImg() {
+		return Img;
 	}
 
 
-	public void setImage(String image) {
-		Image = image;
+	public void setImg(int img) {
+		Img = img;
+	}
+
+
+	public String getPathImg() {
+		return PathImg;
+	}
+
+
+	public void setPathImg(String pathImg) {
+		PathImg = pathImg;
+	}
+
+
+	public String getWhyGoal() {
+		return WhyGoal;
+	}
+
+
+	public void setWhyGoal(String whyGoal) {
+		WhyGoal = whyGoal;
+	}
+
+
+	public String getUserId() {
+		return UserId;
+	}
+
+
+	public void setUserId(String userId) {
+		UserId = userId;
 	}
 
 
@@ -121,9 +212,11 @@ public class Goal {
 	public void setSaves(ArrayList<Pair<String, String>> saves) {
 		Saves = saves;
 	}
+
+
 	
-	
-	
+
+
 	
 	
 	

@@ -15,7 +15,8 @@ public class PersistManager extends SQLiteOpenHelper{
 
 	@Override   
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATE TABLE User (name TEXT, mail TEXT, pass TEXT)");		
+		db.execSQL("CREATE TABLE User (name TEXT, mail TEXT, pass TEXT);" +
+				"CREATE TABLE UserFacebook(Id TEXT, name TEXT)");		
 	}
 
 	@Override
@@ -26,7 +27,12 @@ public class PersistManager extends SQLiteOpenHelper{
 	
 	public void SaveUser(String nombre, String correo, String pass){
 		SQLiteDatabase db = getWritableDatabase();
-		db.execSQL("INSERT INTO usuario VALUES ('"+nombre+"',"+"'"+correo+"'"+"'"+pass+"')");
+		db.execSQL("INSERT INTO User VALUES ('"+nombre+"',"+"'"+correo+"'"+"'"+pass+"')");
+	}
+	
+	public void SaveUseFacebook(String Id, String nombre){
+		SQLiteDatabase db = getWritableDatabase();
+		db.execSQL("INSERT INTO UserFacebook VALUES ('"+Id+"',"+"'"+nombre+"')");
 	}
 	
 	public Vector<String> getAllRegisters(String Table){

@@ -6,7 +6,7 @@
 <RelativeLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background0_tilde"
+    android:background="@drawable/bg3"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -26,7 +26,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/info_why"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -41,7 +41,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignLeft="@+id/info_why"
         android:layout_below="@+id/newgoal_dgoal"
         android:layout_marginTop="20dp"
         android:text="@string/pregunta_cuando"
@@ -99,7 +99,7 @@
         android:layout_below="@+id/newgoal_saving"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="15px"
-        android:layout_toRightOf="@+id/textView2"
+        android:layout_toRightOf="@+id/info_why"
         android:background="@color/blue_title"
         android:text="@string/boton_siguiente"
         android:textColor="#fff" />
@@ -115,7 +115,6 @@
         android:hint="@string/signo_pesos"
         android:inputType="number" >
 
-        <requestFocus />
     </EditText>
 
     <ImageButton
@@ -132,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/newgoal_calendar"
-        android:layout_alignRight="@+id/textView2"
+        android:layout_alignRight="@+id/info_why"
         android:layout_marginBottom="12dp"
         android:layout_marginRight="16dp"
         android:text="Medium Text"
@@ -144,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignRight="@+id/newgoal_t_saving"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/info_why"
         android:layout_marginTop="15dp"
         android:autoText="false"
         android:ems="10" />
@@ -156,7 +155,7 @@
         android:layout_alignBottom="@+id/newgoal_bsiguiente"
         android:layout_alignLeft="@+id/newgoal_saving"
         android:layout_marginRight="10px"
-        android:layout_alignRight="@+id/textView2"
+        android:layout_alignRight="@+id/info_why"
         android:text="@string/boton_calcular"
         android:background="@color/blue_title"
         android:textColor="#fff"  />

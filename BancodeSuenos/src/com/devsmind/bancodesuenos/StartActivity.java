@@ -1,6 +1,7 @@
 package com.devsmind.bancodesuenos;
 
 import com.bd.persistencia.PersistManager;
+import com.bds.BPO.BPOServer;
 import com.db.Activities.LoginActivity;
 import com.db.Activities.NewGoalActivity;
 import com.db.Activities.NewGoalActivity;
@@ -20,6 +21,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -82,6 +84,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
         //facebook
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
+        
         if (savedInstanceState != null) {
             String name = savedInstanceState.getString(PENDING_ACTION_BUNDLE_KEY);
             pendingAction = PendingAction.valueOf(name);
@@ -98,15 +101,12 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
             String name = savedInstanceState.getString(PENDING_ACTION_BUNDLE_KEY);
             pendingAction = PendingAction.valueOf(name);
         }
-
         LoginFacebook.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
             @Override
             public void onUserInfoFetched(GraphUser user) {
                 StartActivity.this.usuario = user;
                 updateUI();
                 handlePendingAction();
-                Intent i=new Intent(getApplicationContext(),NewGoalActivity.class);
-
             }
         });
             
@@ -125,9 +125,6 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     private void addListeners() {
 		Logo.setOnClickListener(this);
 		IngresarCorreo.setOnClickListener(this);
-
-		//LoginFacebook.setOnClickListener(this);
-
 		LoginFacebook.setOnClickListener(this);
         
 	}
@@ -144,7 +141,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		if (view.getId() == Logo.getId()){
-			ValidateUser();
+			 ContinueLogout();
 			return;
 		}
 		if (view.getId() == IngresarCorreo.getId()){
@@ -152,6 +149,24 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 			startActivity(i);
 			return;
 		}
+	}
+
+
+	private void ContinueLogout() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		 builder.setTitle("O.O");
+		 builder.setMessage(getResources().getString(R.string.WhyLog))
+		 	.setPositiveButton("Aceptar",new  DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int id) {
+		  	
+		  }
+     }).setNegativeButton("Continuar",new  DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int id) {
+			  ValidateUser();
+		  }
+     });
+		 builder.create();
+		 builder.show();
 	}
 
 	private void ValidateUser() {
@@ -232,8 +247,13 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 
         	
 //            profilePictureView.setProfileId(usuario.getId());
-            nombre=usuario.getFirstName();
-            apellido=usuario.getLastName();
+            nombre=usuario.getFirstName()+" "+usuario.getLastName();
+            String id = usuario.getId();
+            if(BPOServer.CreateUserFacebook(id, nombre)){
+            	PersistManager pm = new PersistManager(this);
+            	pm.SaveUseFacebook(id, nombre);
+            }
+            
 //            ImageView fbImage = ( ( ImageView)profilePictureView.getChildAt( 0));
 //            fotoPerfil  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
             Intent i=new Intent(getApplicationContext(),NewGoalActivity.class);
@@ -250,8 +270,19 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 
     private void handlePendingAction() {
         pendingAction = PendingAction.NONE;
-
-        
     }
+    
+    private void CuadroDialogo(String Tittle,String mensaje){
+		 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		 builder.setTitle(Tittle);
+		 builder.setMessage(mensaje)
+		 	.setPositiveButton("Aceptar",new  DialogInterface.OnClickListener() {
+          public void onClick(DialogInterface dialog, int id) {
+          	
+          }
+      });
+		 builder.create();
+		 builder.show();
+	}
     
 }

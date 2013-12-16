@@ -25,6 +25,7 @@ public class InfoGoalActivity extends Activity implements OnClickListener{
 
 	private String Name;
 	private ImageView Imagen;
+	private int ImageId;
 	private Button Next;
 	private ImageButton GridPhotos;
 	private Button Skip;
@@ -102,8 +103,14 @@ public class InfoGoalActivity extends Activity implements OnClickListener{
 			startActivityForResult(i, v.getId());
 			return;
 		}else if(v.getId() == Next.getId()){
-			Intent i = new Intent(this,MainActivity.class);
-			startActivity(i);
+			Intent returnIntent = new Intent();
+			String Name = ((TextView)findViewById(R.id.info_namegoal)).getText().toString();
+			String Why = ((TextView)findViewById(R.id.info_why)).getText().toString();
+			returnIntent.putExtra("ImgId",ImageId);
+			returnIntent.putExtra("Name", Name);
+			returnIntent.putExtra("Why", Why);
+			setResult(RESULT_OK, returnIntent); 
+			finish();
 		}
 	}
 	
@@ -111,7 +118,8 @@ public class InfoGoalActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(GridPhotos.getId() == requestCode && resultCode == RESULT_OK ){
-			 TypedArray imgs = getResources().obtainTypedArray(R.array.photo_ids);
+			ImageId = data.getIntExtra("img", 0); 
+			TypedArray imgs = getResources().obtainTypedArray(R.array.photo_ids);
 			 Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
 					 imgs.getResourceId(data.getIntExtra("img", 0), -1));
 			 Imagen.setImageBitmap(bitmap);
