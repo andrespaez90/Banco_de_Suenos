@@ -1,5 +1,11 @@
 package com.devsmind.bancodesuenos;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.bd.Modelo.ModeloFacade;
+import com.bd.Modelo.User;
 import com.bd.persistencia.PersistManager;
 import com.bds.BPO.BPOServer;
 import com.db.Activities.LoginActivity;
@@ -46,9 +52,10 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     private final String PENDING_ACTION_BUNDLE_KEY = "com.facebook.samples.hellofacebook:PendingAction";
     //Facebook bd
     private GraphUser usuario;
-    private String cumple;
-    private String nombre;
-    private String apellido;
+    private String Cumple;
+    private String Nombre;
+    private String Apellido;
+    private String Correoface;
     private Bitmap  fotoPerfil;
     
 
@@ -60,7 +67,8 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     private UiLifecycleHelper uiHelper;
 
     private Session.StatusCallback callback = new Session.StatusCallback() {
-        @Override
+    	
+    	@Override
         public void call(Session session, SessionState state, Exception exception) {
             onSessionStateChange(session, state, exception);
         }
@@ -101,6 +109,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
             String name = savedInstanceState.getString(PENDING_ACTION_BUNDLE_KEY);
             pendingAction = PendingAction.valueOf(name);
         }
+        LoginFacebook.setReadPermissions(Arrays.asList("basic_info","email"));
         LoginFacebook.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
             @Override
             public void onUserInfoFetched(GraphUser user) {
@@ -125,7 +134,6 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     private void addListeners() {
 		Logo.setOnClickListener(this);
 		IngresarCorreo.setOnClickListener(this);
-		LoginFacebook.setOnClickListener(this);
         
 	}
     
@@ -242,30 +250,44 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     private void updateUI() {
         Session session = Session.getActiveSession();
         boolean enableButtons = (session != null && session.isOpened());
-
+     
         if (enableButtons && usuario != null) {
-
-        	
 //            profilePictureView.setProfileId(usuario.getId());
-            nombre=usuario.getFirstName()+" "+usuario.getLastName();
+            Nombre=usuario.getFirstName()+" "+usuario.getLastName();
+            Correoface = usuario.asMap().get("email").toString();
+            Cumple = ""+usuario.getBirthday();
             String id = usuario.getId();
-            if(BPOServer.CreateUserFacebook(id, nombre)){
-            	PersistManager pm = new PersistManager(this);
-            	pm.SaveUseFacebook(id, nombre);
+            String response = BPOServer.CreateUserFacebook(Correoface, Nombre,Cumple,id);
+            if(!response.equals("already") ){
+            	Intent i = new Intent(this,MainActivity.class);
+            	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            	startActivity(i);
+            	User u = new User(Correoface,Nombre,Cumple,id);
+            	ModeloFacade.setUser(u);
+            }else if(!response.equals("Created")){
+            	Intent i = new Intent(this,NewGoalActivity.class);
+            	User u = new User(Correoface,Nombre,Cumple,id);
+            	ModeloFacade.setUser(u);
+            	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            	startActivity(i);
+            }else {
+            	ModeloFacade.UserInterpretate(response);
+            	Intent i = new Intent(this,MainActivity.class);
+            	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            	startActivity(i);
             }
             
 //            ImageView fbImage = ( ( ImageView)profilePictureView.getChildAt( 0));
 //            fotoPerfil  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
-            Intent i=new Intent(getApplicationContext(),NewGoalActivity.class);
-            startActivity(i);
+           // Intent i=new Intent(getApplicationContext(),NewGoalActivity.class);
+            //startActivity(i);
 
-            profilePictureView.setProfileId(usuario.getId());
-            nombre=usuario.getFirstName();
-            apellido=usuario.getLastName();
-            ImageView fbImage = ( ( ImageView)profilePictureView.getChildAt( 0));
-            fotoPerfil  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
+           // profilePictureView.setProfileId(usuario.getId());
+           
+            //ImageView fbImage = ( ( ImageView)profilePictureView.getChildAt(0));
+            //fotoPerfil  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
 
-        } 
+        }
     }
 
     private void handlePendingAction() {

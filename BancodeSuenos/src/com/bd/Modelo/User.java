@@ -9,21 +9,29 @@ public class User {
 	private String Name;
 	private String Mail;
 	private String Password;
+	private String Birth;
+	private String IdFace;
 	
-	private ArrayList<Goal> Goals; 
 	    
 	public User(String mail, String password) {
 		super();
 		Mail = mail;
 		Password = password;
 		Name = "Soñador";
-		Goals = new ArrayList<Goal>();
+	}	
+	
+	public User(String mail, String name,String birth, String iface) {
+		super();
+		Mail = mail;
+		Name = name;
+		Birth = birth;
+		IdFace = iface;
 	}	
 	
 	public User(String id) {
 		super();
 		Mail = id;
-		Goals = new ArrayList<Goal>();
+		
 	}
 	
 	public void setAttribute(Pair<String, String> data) {
@@ -34,7 +42,14 @@ public class User {
 	    	 Name = data.second;
 	             return;
 	     }
-	    
+	     if(data.first.equals("Birth")) {
+	    	 Birth = data.second;
+	             return;
+	     }
+	     if(data.first.equals("IdFace")) {
+	    	 IdFace = data.second;
+	             return;
+	     }
 		
 	}
 	

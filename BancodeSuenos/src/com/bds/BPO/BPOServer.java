@@ -28,19 +28,21 @@ public class BPOServer {
              }                
      }
      
-     public static boolean CreateUserFacebook(String Id, String Nombre){
-    	 String methodname = "UserCreator";
+     public static String CreateUserFacebook(String mail, String name,String birth, String id ){
+    	 String methodname = "UserFaceBookCreator";
     	 SoapObject request = new SoapObject(NAMESPACE,methodname);
-    	 request.addProperty("arg0",Id);
-         request.addProperty("arg1",Nombre);
+    	 request.addProperty("arg0",mail);
+         request.addProperty("arg1",name);
+         request.addProperty("arg2",birth);
+         request.addProperty("arg3",id);
          ExecuteMethod em = new ExecuteMethod();
          em.execute(request);
          try{
-                 return Boolean.parseBoolean(em.get().toString());
+                 return em.get().toString();
          }catch(InterruptedException IE){
-                 return false;
+                 return null;
          }catch (ExecutionException ee) {
-                 return false;
+                 return null;
          }                
      }
      

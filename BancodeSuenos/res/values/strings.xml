@@ -24,7 +24,7 @@
     <string name="texto_explicacionNombre">Si deseas cuentanos el por qué de este sueño</string>
     <string name="boton_ok">Ok ></string>
     <string name="boton_omitir">Omitir</string>
-    <string name="pregunta_como_ahorras">¿Cuánto lo puedes ahorrar?</string>
+    <string name="pregunta_como_ahorras">¿Cuánto puedes ahorrar?</string>
     <string name="boton_login">Ingresa con tu correo</string>
     <string name="boton_siguiente">Siguiente</string>
     <string name="title_activity_photos">Galería de Fotos</string>

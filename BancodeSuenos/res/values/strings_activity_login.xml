@@ -7,7 +7,7 @@
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in_register">Registrar/Ingresar</string>
     <string name="action_sign_in_short">Ingresar</string>
-    <string name="action_forgot_password">Olvidste tu constraseña</string>
+    <string name="action_forgot_password">Olvidaste tu constraseña</string>
     <string name="login_progress_signing_in">Signing in&#8230;</string>
     <string name="error_invalid_email">El correo no es valido</string>
     <string name="error_invalid_password">La contraseña es muy corta</string>
