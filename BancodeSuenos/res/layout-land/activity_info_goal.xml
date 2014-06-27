@@ -87,7 +87,7 @@
         android:inputType="textMultiLine"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/blue_title" />
+        android:textColor="@color/principal_blue" />
 
     <Button
         android:id="@+id/info_bskip"

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg3"
+    android:orientation="vertical"
+    android:tileMode="repeat" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/fragment_accounts_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/LayoutMoney" >
+
+        <Button
+            android:id="@+id/fragment_accounts_saving"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_accounts_btn_saving" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/LayoutMoney" >
+
+        <Button
+            android:id="@+id/fragment_accounts_expense"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:text="@string/fragment_accounts_btn_expense" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.31"
+            android:gravity="center"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/LayoutMoney" >
+
+        <Button
+            android:id="@+id/fragment_accounts_liabilities"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:text="@string/fragment_accounts_btn_liabilities" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.26"
+            android:gravity="center"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/LayoutMoney" >
+
+        <Button
+            android:id="@+id/fragment_accounts_loan"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:text="@string/fragment_accounts_btn_loan" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:gravity="center"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/fragment_general_account_total"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</LinearLayout>

@@ -1,6 +1,6 @@
 <resources>
 
-    <color name="blue_title">#00AFEF</color>
-    <color name="blue_subtitle">#B3E1F4</color>
-
+    <color name="principal_blue">#00AFEF</color>
+    <color name="principal_orange">#F8B947</color>
+	<color name="grey_selected">#BCBCBC</color>
 </resources>

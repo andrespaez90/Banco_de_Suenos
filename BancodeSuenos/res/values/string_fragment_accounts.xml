@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fragment_accounts_title">Resumen de Cuentas</string>
+    <string name="fragment_accounts_btn_saving">Ahorros</string>
+    <string name="fragment_accounts_btn_expense">Gastos</string>
+    <string name="fragment_accounts_btn_liabilities">Deudas</string>
+    <string name="fragment_accounts_btn_loan">Prestamos</string>
+    
+    
+    <string name="fragment_general_account_total">Total = </string>
+    <string name="fragment_general_account_moneysiganl">$</string>
+    <string name="fragment_general_account_add">Agergar</string>
+    
+    <string name="fragment_saving_title">Tu Historial de Ahorros</string>
+    <string name="fragment_expense_title">Tu Historial de Gastos</string>
+    <string name="fragment_liabilities_title">Tu Historial de Deudas</string>
+    <string name="fragment_load_title">Tu Historial de Prestamos</string>
+    
+</resources>

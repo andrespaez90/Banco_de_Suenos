@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="titulo_nuevoSueno">Ahora, cuentanos</string>
+    <string name="pregunta_sueno">¿Cuál es tu sueño?</string>
+    <string name="pregunta_cuando">¿Cuándo lo quieres cumplir?</string>
+    <string name="pregunta_costo">¿Cuánto podria costar?</string>
+    <string name="signo_pesos">$</string>
+</resources>

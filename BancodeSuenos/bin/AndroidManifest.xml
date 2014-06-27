@@ -5,7 +5,7 @@
     android:versionName="1.1" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.db.Activities.NewGoalActivity"
+            android:name="com.db.Activities.Activity_NewDream"
             android:label="@string/title_activity_new_goal" >
         </activity>
         <activity
-            android:name="com.devsmind.bancodesuenos.MainActivity"
+            android:name="com.devsmind.bancodesuenos.MainActivity2"
             android:label="@string/title_activity_main" >
         </activity>
         <activity
@@ -59,15 +59,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.db.Activities.AmigosActivity"
-            android:label="@string/title_activity_amigos" >
-        </activity>
-        <activity
-            android:name="com.devsmind.bancodesuenos.PerfilActivity"
-            android:label="@string/title_activity_perfil" >
-        </activity>
-        <activity
-            android:name="com.devsmind.bancodesuenos.PerfilGoalActivity"
+            android:name="com.db.Activities.Activity_DreamProfile"
             android:label="@string/title_activity_perfil_goal" >
         </activity>
         <activity
@@ -78,6 +70,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.preference.PreferenceActivity" />
         </activity>
+        <activity android:name="MainActivity"></activity>
+        <activity android:name="Accounts_Activity"></activity>
     </application>
 
 </manifest>

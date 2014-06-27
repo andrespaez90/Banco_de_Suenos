@@ -153,7 +153,7 @@ public class LoginActivity extends Activity {
 					showProgress(false);
 					Intent i ;
 					if(response.equals("Correct new")){
-						i = new Intent(this,NewGoalActivity.class);
+						i = new Intent(this,Activity_NewDream.class);
 						User u = new User(mEmail, mPassword);
 						ModeloFacade.setUser(u);
 					}else{

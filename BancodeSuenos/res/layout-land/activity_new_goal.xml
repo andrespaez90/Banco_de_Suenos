@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".NewGoalActivity" >
+    tools:context=".Activity_NewDream" >
 
     <TextView
         android:id="@+id/TextView01"
@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/titulo_nuevoSueno"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/blue_title"
+        android:textColor="@color/principal_blue"
         android:textStyle="bold" />
 
     <AutoCompleteTextView
@@ -53,7 +53,7 @@
         android:layout_marginLeft="18dp"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/blue_title" />
+        android:textColor="@color/principal_blue" />
 
     <TextView
         android:id="@+id/textView3"
@@ -138,7 +138,7 @@
         android:layout_below="@+id/newgoal_value"
         android:layout_marginTop="22dp"
         android:layout_toRightOf="@+id/newgoal_date"
-        android:background="@color/blue_title"
+        android:background="@color/principal_blue"
         android:text="@string/boton_siguiente"
         android:textColor="#fff" />
 

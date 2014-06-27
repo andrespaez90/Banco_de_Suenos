@@ -7,7 +7,7 @@ import android.util.Pair;
 public class ModeloFacade {
 
 	private static User User;
-	private static ArrayList<Goal> Goals;
+	private static ArrayList<Dream> Goals;
 	private static ArrayList<GoalsFirends> FriendsGoals;
 	
 	public static void setUser(User user){
@@ -18,12 +18,12 @@ public class ModeloFacade {
 		return User;
 	}
 	
-	public static ArrayList<Goal> getGoals(){
+	public static ArrayList<Dream> getGoals(){
 		return Goals;
 	}
 	
 	
-	public static void addGoal(Goal g){
+	public static void addGoal(Dream g){
 		Goals.add(g);
 	}
 	
@@ -33,7 +33,7 @@ public class ModeloFacade {
 	
 	public static void  UserInterpretate(String userdata){
 		if(!userdata.equals("Error")){
-			Goals = new ArrayList<Goal>();
+			Goals = new ArrayList<Dream>();
             String datauser[] = userdata.split("\"name\" :");  
             User u;
             for(int i=1; i<datauser.length ;i++){
@@ -56,13 +56,13 @@ public class ModeloFacade {
 	
 	public static void GoalsInterpretate(String goals){
 		if(!goals.equals("Error")){
-			Goals = new ArrayList<Goal>();
+			Goals = new ArrayList<Dream>();
             String goal[] = goals.split("\"name\" :");  
-            Goal g;
+            Dream g;
             for(int i=1; i<goal.length ;i++){
                     String datos[] = goal[i].split(",");
                     String id = datos[0].substring(2,datos[0].lastIndexOf("\""));
-                    g = new Goal(id);
+                    g = new Dream(id);
                     for(int j = 1; j<datos.length;j++){
                             try{
                                 String[] info = datos[j].split("\"");

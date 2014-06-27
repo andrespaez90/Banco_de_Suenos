@@ -9,11 +9,13 @@ import com.bd.Modelo.User;
 import com.bd.persistencia.PersistManager;
 import com.bds.BPO.BPOServer;
 import com.db.Activities.LoginActivity;
-import com.db.Activities.NewGoalActivity;
-import com.db.Activities.NewGoalActivity;
+import com.db.Activities.Activity_NewDream;
+import com.db.Activities.Activity_NewDream;
 import com.facebook.AppEventsLogger;
 import com.facebook.FacebookAuthorizationException;
 import com.facebook.FacebookOperationCanceledException;
+import com.facebook.Request;
+import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
@@ -39,6 +41,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StartActivity extends FragmentActivity implements OnClickListener {
  
@@ -50,6 +53,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     private ProfilePictureView profilePictureView;
     private PendingAction pendingAction = PendingAction.NONE;    
     private final String PENDING_ACTION_BUNDLE_KEY = "com.facebook.samples.hellofacebook:PendingAction";
+    
     //Facebook bd
     private GraphUser usuario;
     private String Cumple;
@@ -89,18 +93,10 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //facebook
-        uiHelper = new UiLifecycleHelper(this, callback);
-        uiHelper.onCreate(savedInstanceState);
-        
-        if (savedInstanceState != null) {
-            String name = savedInstanceState.getString(PENDING_ACTION_BUNDLE_KEY);
-            pendingAction = PendingAction.valueOf(name);
-        }
         setContentView(R.layout.activity_start);
         Init();
         addListeners();
-                
+                        
         //facebook
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
@@ -109,7 +105,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
             String name = savedInstanceState.getString(PENDING_ACTION_BUNDLE_KEY);
             pendingAction = PendingAction.valueOf(name);
         }
-        LoginFacebook.setReadPermissions(Arrays.asList("basic_info","email"));
+        LoginFacebook.setReadPermissions(Arrays.asList("basic_info","email","public_profile"));
         LoginFacebook.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
             @Override
             public void onUserInfoFetched(GraphUser user) {
@@ -148,40 +144,22 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View view) {
-		if (view.getId() == Logo.getId()){
-			 ContinueLogout();
-			return;
-		}
 		if (view.getId() == IngresarCorreo.getId()){
 			Intent i = new Intent(this,LoginActivity.class);
 			startActivity(i);
 			return;
 		}
+		if(view.getId() == LoginFacebook.getId()){
+			
+		}
 	}
 
-
-	private void ContinueLogout() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		 builder.setTitle("O.O");
-		 builder.setMessage(getResources().getString(R.string.WhyLog))
-		 	.setPositiveButton("Aceptar",new  DialogInterface.OnClickListener() {
-		  public void onClick(DialogInterface dialog, int id) {
-		  	
-		  }
-     }).setNegativeButton("Continuar",new  DialogInterface.OnClickListener() {
-		  public void onClick(DialogInterface dialog, int id) {
-			  ValidateUser();
-		  }
-     });
-		 builder.create();
-		 builder.show();
-	}
 
 	private void ValidateUser() {
 		PersistManager pm = new PersistManager(StartActivity.this);
     	if(pm.getAllRegisters("User").size()==0){
     		//Crear Usuario falso
-    		Intent i = new Intent(this, NewGoalActivity.class);
+    		Intent i = new Intent(this, Activity_NewDream.class);
 			startActivity(i);
     	}else{
     		//Actualzar Modelo
@@ -196,13 +174,12 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 	@Override
     protected void onResume() {
         super.onResume();
+        Session session = Session.getActiveSession();
+        if (session != null &&
+               (session.isOpened() || session.isClosed()) ) {
+            onSessionStateChange(session, session.getState(), null);
+        }
         uiHelper.onResume();
-
-        // Call the 'activateApp' method to log an app event for use in analytics and advertising reporting.  Do so in
-        // the onResume methods of the primary Activities that an app may be launched into.
-        AppEventsLogger.activateApp(this);
-
-        updateUI();
     }
 
     @Override
@@ -215,8 +192,8 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        uiHelper.onActivityResult(requestCode, resultCode, data, dialogCallback);
+    	super.onActivityResult(requestCode, resultCode, data);
+    	Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
     }
 
     @Override
@@ -245,16 +222,21 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
             handlePendingAction();
         }
         updateUI();
+       
     }
 
     private void updateUI() {
         Session session = Session.getActiveSession();
         boolean enableButtons = (session != null && session.isOpened());
+        Toast toast1 =Toast.makeText(getApplicationContext(),
+                        "valor: "+session.isOpened(), Toast.LENGTH_SHORT);
      
+            toast1.show();
         if (enableButtons && usuario != null) {
 //            profilePictureView.setProfileId(usuario.getId());
             Nombre=usuario.getFirstName()+" "+usuario.getLastName();
             Correoface = usuario.asMap().get("email").toString();
+            Toast toast21 = Toast.makeText(getApplicationContext(),  "Nombre: "+usuario.getFirstName(), Toast.LENGTH_SHORT);
             Cumple = ""+usuario.getBirthday();
             String id = usuario.getId();
             String response = BPOServer.CreateUserFacebook(Correoface, Nombre,Cumple,id);
@@ -265,7 +247,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
             	User u = new User(Correoface,Nombre,Cumple,id);
             	ModeloFacade.setUser(u);
             }else if(!response.equals("Created")){
-            	Intent i = new Intent(this,NewGoalActivity.class);
+            	Intent i = new Intent(this,Activity_NewDream.class);
             	User u = new User(Correoface,Nombre,Cumple,id);
             	ModeloFacade.setUser(u);
             	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -290,6 +272,27 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
         }
     }
 
+    
+    private void onClickLogin() {
+        Session session = Session.getActiveSession();
+        if (!session.isOpened() && !session.isClosed()) {
+            session.openForRead(new Session.OpenRequest(this)
+                .setPermissions(Arrays.asList("public_profile"))
+                .setCallback(callback));
+        } else {
+            Session.openActiveSession(this, true, callback);
+        }
+    }
+    
+    private class SessionStatusCallback implements Session.StatusCallback {
+        @Override
+        public void call(Session session, SessionState state, Exception exception) {
+                // Respond to session state changes, ex: updating the view
+        }
+    }
+    
+    
+    
     private void handlePendingAction() {
         pendingAction = PendingAction.NONE;
     }
