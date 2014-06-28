@@ -31,5 +31,12 @@
     <string name="title_activity_perfil">PerfilActivity</string>
     <string name="title_activity_perfil_goal">Mi Sueño</string>
     <string name="title_activity_config">Configuración de perfil</string>
+    <string name="numer_one">1</string>
+    <string name="number_two">2</string>
+    <string name="number_four">4</string>
+    <string name="number_five">5</string>
+    <string name="number_six">6</string>
+    <string name="number_three">3</string>
+    <string name="numer_seven">7</string>
 
 </resources>

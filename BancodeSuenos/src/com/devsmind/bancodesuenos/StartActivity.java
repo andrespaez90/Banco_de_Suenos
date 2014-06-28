@@ -43,7 +43,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class StartActivity extends FragmentActivity implements OnClickListener {
+public class StartActivity extends FragmentActivity /*implements OnClickListener*/ {
  
 	
 	private ImageView Logo;
@@ -51,7 +51,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 	//Facebook
 	private LoginButton LoginFacebook;
     private ProfilePictureView profilePictureView;
-    private PendingAction pendingAction = PendingAction.NONE;    
+    //private PendingAction pendingAction = PendingAction.NONE;    
     private final String PENDING_ACTION_BUNDLE_KEY = "com.facebook.samples.hellofacebook:PendingAction";
     
     //Facebook bd
@@ -62,7 +62,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
     private String Correoface;
     private Bitmap  fotoPerfil;
     
-
+/*
     private enum PendingAction {
         NONE,
         POST_PHOTO,
@@ -88,13 +88,13 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
         public void onComplete(FacebookDialog.PendingCall pendingCall, Bundle data) {
             Log.d("HelloFacebook", "Success!");
         }
-    };
+    };*/
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
-        Init();
+        setContentView(R.layout.activity_password);
+       /* Init();
         addListeners();
                         
         //facebook
@@ -113,12 +113,12 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
                 updateUI();
                 handlePendingAction();
             }
-        });
+        });*/
             
         
     }
 
-
+/*
     private void Init() {
 		Logo = (ImageView) findViewById(R.id.start_logo);
 		IngresarCorreo = (Button) findViewById(R.id.start_correo);
@@ -309,5 +309,5 @@ public class StartActivity extends FragmentActivity implements OnClickListener {
 		 builder.create();
 		 builder.show();
 	}
-    
+    */
 }
