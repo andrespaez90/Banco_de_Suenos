@@ -6,7 +6,7 @@ package com.bd.Modelo;
  */
 
 public class Lista_entrada {
-	private String id;
+	private int id;
 	private int idImagen; 
 	private String textoEncima; 
 	private String textoDebajo; 
@@ -15,11 +15,11 @@ public class Lista_entrada {
 	
 	
 	  
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -49,11 +49,13 @@ public class Lista_entrada {
 	    this.plazo=plazo;
 	    this.textoDebajo = "";
 	}
-	public Lista_entrada (int idImagen, String textoEncima, int plazo,String id) { 
+	
+	//Use this constructor for yhe list of the main activity
+	public Lista_entrada (int id, int idImagen, String textoEncima, int plazo, String  date) { 
 	    this.idImagen = idImagen; 
 	    this.textoEncima = textoEncima; 
 	    this.plazo=plazo;
-	    this.textoDebajo = "";
+	    this.textoDebajo = date;
 	    this.id = id;
 	}
 	

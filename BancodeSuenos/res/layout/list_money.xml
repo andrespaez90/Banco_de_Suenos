@@ -8,47 +8,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.81"
+        android:gravity="center"
         android:orientation="horizontal" >
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="4.53"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
             android:gravity="left|center_vertical"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView_superior"
+                android:id="@+id/listmoney_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView_inferior"
+                android:id="@+id/listmoney_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Small Text"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView_imagen"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="0.70"
-            android:adjustViewBounds="true"
-            android:contentDescription="Descripción del contenido de la imagen"
-            android:scaleType="fitXY"
-            android:src="@android:drawable/ic_menu_gallery" />
+        <TextView
+            android:id="@+id/listmoney_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.53"
+            android:gravity="center|center_vertical"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/plazo"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical" 
-        android:background="#000">
+        android:background="#F3F3F3">
     </LinearLayout>
 
 </LinearLayout>

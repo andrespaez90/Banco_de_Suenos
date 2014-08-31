@@ -14,7 +14,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_new_goal">Un Nuevo sueño</string>
     <string name="title_activity_main">Mis Sueños</string>
-    
     <string name="title_activity_custom_goal">Personaliza tu sueño</string>
     <string name="pregunta_nombre">El nombre de tu sueño</string>
     <string name="texto_explicacionNombre">Si deseas cuentanos el por qué de este sueño</string>
@@ -38,5 +37,11 @@
     <string name="number_six">6</string>
     <string name="number_three">3</string>
     <string name="numer_seven">7</string>
+    <string name="title_activity_new_user_">NewUser_Activity</string>
+    <string name="string_money">$0.00</string>
+    <string name="string_balance">Balance de Dinero</string>
+    <string name="string_balance_add">Agregar Dinero</string>
+    <string name="string_balance_remove">Retirar Dineto</string>
+    <string name="title_list_account">Ultimos movimientos</string>
 
 </resources>

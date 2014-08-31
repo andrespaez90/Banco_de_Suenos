@@ -57,7 +57,7 @@ public class PhotoDialog extends DialogFragment {
 	 
 	    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 	    LayoutInflater inflater = getActivity().getLayoutInflater();
-	    View view = (inflater.inflate(R.layout.photo_dialog, null));
+	    View view = (inflater.inflate(R.layout.dialog_photo, null));
 	    ImageView img =(ImageView) view.findViewById(R.id.dialog_img);
 	    img.setImageBitmap(Imagen);
 	    builder.setView(view)

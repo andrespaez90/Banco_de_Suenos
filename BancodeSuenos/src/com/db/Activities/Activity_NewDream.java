@@ -4,8 +4,8 @@ import java.util.Calendar;
 
 import com.bd.Modelo.Dream;
 import com.bd.Modelo.ModeloFacade;
+import com.bd.persistencia.PersistManager;
 import com.bds.BPO.BPOLocal;
-import com.bds.BPO.BPOServer;
 import com.devsmind.bancodesuenos.MainActivity;
 import com.devsmind.bancodesuenos.R;
 import com.devsmind.bancodesuenos.StartActivity;
@@ -22,23 +22,31 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.YuvImage;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView.OnEditorActionListener;
 
 public class Activity_NewDream extends Activity implements OnClickListener{
 
 	private int myYear, myMonth, myDay;
 	static final int ID_DATEPICKER = 0;
+	
+	private int Type;
+	private int idDream;
 	
 	
 	private ImageButton Btn_camera;
@@ -48,6 +56,7 @@ public class Activity_NewDream extends Activity implements OnClickListener{
 	private ImageButton Btn_Calendar;
 	
 	private TextView Date;
+	private AutoCompleteTextView DreamName;
 	private ImageView Imagen;
 	
 	private String Name_dream;			
@@ -58,23 +67,60 @@ public class Activity_NewDream extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_dream);
 		Init();
+		setType();
 		addListeners();
+	}
+
+	/*In this method i'll know with activity invoke  
+	 * if were newDream or EdiDream, if was edit dream , 
+	 * we need to read new data from Intent 
+	 * */
+	private void setType() {
+		Intent i = getIntent();
+		Type = i.getIntExtra("Type", 0);
+		if(Type != 0){
+			idDream = i.getIntExtra("id", 0);
+			DreamName.setText(i.getStringExtra("Name"));
+			Date.setText(i.getStringExtra("Date"));
+			DateofDream(Date.getText().toString());
+			int image = i.getIntExtra("Image", 0); 
+			TypedArray imgs = getResources().obtainTypedArray(R.array.photo_ids);
+			Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+					 imgs.getResourceId(image, -1));
+			Imagen.setImageBitmap(bitmap);
+		}
+		
 	}
 
 	/*this method init all variables and put the id of the image at 0
 	taht is a image for defult*/
 	
 	private void Init() {
+		DreamName = (AutoCompleteTextView)findViewById(R.id.newdream_name);
 		Btn_camera = (ImageButton) findViewById(R.id.newdream_camera);
 		Btn_search_img = (ImageButton) findViewById(R.id.newdream_search);
 		Btn_Calendar = (ImageButton) findViewById(R.id.newdream_calendar);
 		Btn_cancel = (Button) findViewById(R.id.newdream_bcancel);
 		Btn_Next = (Button) findViewById(R.id.newdream_bsiguiente);
+		Imagen = (ImageView) findViewById(R.id.newdream_img);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,getResources().getStringArray(R.array.type_goal));
-		((AutoCompleteTextView)findViewById(R.id.newdream_name)).setAdapter(adapter);
+		DreamName.setAdapter(adapter);
 		Date = (TextView) findViewById(R.id.newdream_date);
 		Date.setText(TodayDate());
 		id_Image = 0;
+		
+		DreamName.setOnEditorActionListener(new OnEditorActionListener() {
+			
+			@Override
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				if (actionId == EditorInfo.IME_ACTION_NEXT) {
+					InputMethodManager imm = (InputMethodManager)getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(DreamName.getWindowToken(), 0);
+		            return true;
+		        }
+				return false;
+			}			
+		});
 		
 	}
 
@@ -85,6 +131,13 @@ public class Activity_NewDream extends Activity implements OnClickListener{
 		myDay = calendar.get(Calendar.DAY_OF_MONTH);
 		return(myDay+"/"+(myMonth+1)+"/"+myYear);
 		
+	}
+	
+	private void DateofDream(String date){
+		String [] alldate = date.split("/");
+		myDay = Integer.parseInt(alldate[0]);
+		myMonth = Integer.parseInt(alldate[1]);
+		myYear = Integer.parseInt(alldate[2]);
 	}
 	
 	private void addListeners() {
@@ -140,35 +193,26 @@ public class Activity_NewDream extends Activity implements OnClickListener{
 	}
 
 	private void SaveData() {
-		if(BPOLocal.isNetwork(this)){
-			Name_dream = ((TextView)findViewById(R.id.newdream_name)).getText().toString();
-			if(ValidateDate()){
-				//BPOServer.CreateGoal(Name_dream,id_Image,myYear,myMonth,myDay);
+		Name_dream = DreamName.getText().toString();
+		if(ValidateDate() && Name_dream.length()>5){
+			PersistManager pm = new PersistManager(this);
+			String date = myDay+"/"+myMonth+"/"+myYear;
+			if(Type == 0){
+				Dream d = new Dream(ModeloFacade.getDreams().size()+1, Name_dream, 0, "",id_Image, date,0);
+				ModeloFacade.getDreams().add(d);
+				pm.SaveDream(d);
+				MessageDialog(getString(R.string.acpass_title_info), "Sueño creado, Buena Suerte");
+			}else{
+				pm.EditDream(idDream, Name_dream, 0, "", id_Image, date);
+				setResult(RESULT_OK);
+				MessageDialog(getString(R.string.acpass_title_info), "Sueño editado, Buena Suerte");
 			}
-		}else{
-			 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			 builder.setTitle("Ups!");
-			 builder.setMessage("Internet no disponible, deseas activarlo")
-			    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						
-					}
-				})
-			 	.setPositiveButton("Aceptar",new  DialogInterface.OnClickListener() {
-			 		public void onClick(DialogInterface dialog, int id) {
-				    	Intent settings = new Intent(Settings.ACTION_WIFI_SETTINGS);
-						startActivityForResult(settings, 001);
-			 		}
-			 	});
-			 builder.create();
-			 builder.show();
 		}
 	}
 
 	private boolean ValidateDate() {
 		if(!DateValidator()){
-			CuadroDialogo("Error!", "Por favor revisa la fecha ingresada");
+			BPOLocal.PossitiveMessageDialog("Error!", "Por favor revisa la fecha ingresada",this);
 			return false;
 		}
 		return true;
@@ -211,13 +255,13 @@ public class Activity_NewDream extends Activity implements OnClickListener{
 		
 	}
 	
-	private void CuadroDialogo(String Tittle,String mensaje){
+	private void MessageDialog(String Title,String menssage){
 		 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		 builder.setTitle(Tittle);
-		 builder.setMessage(mensaje)
+		 builder.setTitle(Title);
+		 builder.setMessage(menssage)
 		 	.setPositiveButton("Aceptar",new  DialogInterface.OnClickListener() {
            public void onClick(DialogInterface dialog, int id) {
-           	
+        	   finish();
            }
        });
 		 builder.create();

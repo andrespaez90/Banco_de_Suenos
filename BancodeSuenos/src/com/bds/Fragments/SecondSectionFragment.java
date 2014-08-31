@@ -6,7 +6,6 @@ import com.bd.Modelo.Dream;
 import com.bd.Modelo.GoalsFirends;
 import com.bd.Modelo.Lista_entrada;
 import com.bd.Modelo.ModeloFacade;
-import com.bds.BPO.BPOServer;
 import com.db.Activities.ConfigActivity;
 import com.db.Activities.Activity_NewDream;
 import com.db.adapters.Lista_adaptador;
@@ -51,7 +50,7 @@ public class SecondSectionFragment extends Fragment implements OnClickListener,O
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		ModeloFacade.FriendsGoalsInterpretate(BPOServer.FriendsGoals());
+		//ModeloFacade.FriendsGoalsInterpretate(BPOServer.FriendsGoals());
 		init();
 		addListeners();
 		CrearLista();
@@ -79,7 +78,7 @@ public class SecondSectionFragment extends Fragment implements OnClickListener,O
         }
                 
          Lista = (ListView)getActivity(). findViewById(R.id.listAmigosGoal);
-         Lista.setAdapter(new Lista_adaptador(getActivity(), R.layout.amigos_list, datos){
+         Lista.setAdapter(new Lista_adaptador(getActivity(), R.layout.list_friends, datos){
 	 			
 	     	@Override
 				public void onEntrada(Object entrada, View view) {

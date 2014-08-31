@@ -1,6 +1,13 @@
 <resources>
 
     <color name="principal_blue">#00AFEF</color>
+    <color name="principal_blue_trans">#C300AFEF</color>
+    <color name="second_blue">#38C3ED</color>
+    <color name="second_blue_trans">#C338C3ED</color>
     <color name="principal_orange">#F8B947</color>
 	<color name="grey_selected">#BCBCBC</color>
+	<color name="principal_green">#699703</color>
+	<color name="second_green">#8BAD41</color>
+	<color name="principal_red">#C0FF0000</color>
+	<color name="second_red">#C0FF3F46</color>
 </resources>

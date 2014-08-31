@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.devsmind.bancodesuenos"
-    android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionCode="3"
+    android:versionName="2.0.0" >
 
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -19,8 +16,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.devsmind.bancodesuenos.Start_Activity"
-            android:label="@string/app_name" >
+            android:name="com.devsmind.bancodesuenos.MainActivity"
+            android:label="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden|orientation" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -70,8 +68,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.preference.PreferenceActivity" />
         </activity>
-        <activity android:name="MainActivity"></activity>
-        <activity android:name="Accounts_Activity"></activity>
+        <activity android:name="com.devsmind.bancodesuenos.Passnumber_Activity" >
+        </activity>
+        <activity android:name="com.devsmind.bancodesuenos.Accounts_Activity" >
+        </activity>
+        <activity
+            android:name="com.devsmind.bancodesuenos.NewUser_Activity"
+            android:label="@string/title_activity_new_user_" >
+        </activity>
+        <activity android:name="com.db.Activities.Activity_MoneytoDream"></activity>
     </application>
 
 </manifest>

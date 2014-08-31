@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import com.bd.Modelo.Dream;
 import com.bd.Modelo.Lista_entrada;
 import com.bd.Modelo.ModeloFacade;
-import com.bds.BPO.BPOServer;
 import com.bds.Fragments.ExpenseSectionFragment;
 import com.bds.Fragments.LiabilitySectionFragment;
 import com.bds.Fragments.LoanSectionFragment;

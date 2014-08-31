@@ -3,116 +3,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg3"
+    android:gravity="center|top"
     android:orientation="vertical"
     android:tileMode="repeat" >
 
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/border_linear_layout"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/accout_total"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/string_money"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/principal_green"
+            android:textSize="80dp" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/account_radio0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:checked="true"
+            android:text="Agregar Dinero" />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar Gasto" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/accout_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:ems="10"
+            android:hint="Descripción"
+            android:imeOptions="actionNext"
+            android:inputType="textCapSentences"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/accout_value"
+            android:layout_width="93dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.18"
+            android:ems="10"
+            android:hint="Valor"
+            android:imeOptions="actionDone"
+            android:inputType="number" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:text="@string/fragment_accounts_title"
+        android:layout_marginTop="10dp"
+        android:text="Historial de Balance"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/accout_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/LayoutMoney" >
+        android:layout_height="156dp"
+        android:layout_margin="15dp" >
 
-        <Button
-            android:id="@+id/fragment_accounts_saving"
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:text="@string/fragment_accounts_btn_saving" />
+    </ListView>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/accout_moneytodream"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/LayoutMoney" >
-
-        <Button
-            android:id="@+id/fragment_accounts_expense"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.26"
-            android:text="@string/fragment_accounts_btn_expense" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.31"
-            android:gravity="center"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/LayoutMoney" >
-
-        <Button
-            android:id="@+id/fragment_accounts_liabilities"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.26"
-            android:text="@string/fragment_accounts_btn_liabilities" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.26"
-            android:gravity="center"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/LayoutMoney" >
-
-        <Button
-            android:id="@+id/fragment_accounts_loan"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.26"
-            android:text="@string/fragment_accounts_btn_loan" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.26"
-            android:gravity="center"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:text="@string/fragment_general_account_total"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_custom"
+        android:src="@drawable/btn_wtop" />
 
 </LinearLayout>

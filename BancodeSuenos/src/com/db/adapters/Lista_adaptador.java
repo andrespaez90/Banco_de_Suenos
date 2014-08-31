@@ -2,26 +2,26 @@ package com.db.adapters;
 
 import java.util.ArrayList;
 
+import com.devsmind.bancodesuenos.R;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 
-/** Adaptador de ListView universal, para www.jarroba.com
- * @author Ramon Invarato Menéndez
- * www.jarroba.es
- */
-public abstract class Lista_adaptador extends BaseAdapter {
+public abstract class Lista_adaptador extends BaseAdapter{
 	
-    private ArrayList<?> entradas; 
+    private ArrayList<?> Data; 
     private int R_layout_IdView; 
     private Context contexto;
       
     public Lista_adaptador(Context contexto, int R_layout_IdView, ArrayList<?> entradas) {
         super();
         this.contexto = contexto;
-        this.entradas = entradas; 
+        this.Data = entradas; 
         this.R_layout_IdView = R_layout_IdView; 
     }
       
@@ -31,18 +31,21 @@ public abstract class Lista_adaptador extends BaseAdapter {
 			LayoutInflater vi = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
             view = vi.inflate(R_layout_IdView, null); 
         }
-        onEntrada (entradas.get(posicion), view);
+        onEntrada (Data.get(posicion), view);
+        
         return view; 
     }
 
+    
+    
 	@Override
 	public int getCount() {
-		return entradas.size();
+		return Data.size();
 	}
 
 	@Override
 	public Object getItem(int posicion) {
-		return entradas.get(posicion);
+		return Data.get(posicion);
 	}
 
 	@Override

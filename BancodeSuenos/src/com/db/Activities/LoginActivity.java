@@ -7,7 +7,6 @@ import java.security.NoSuchAlgorithmException;
 import com.bd.Modelo.ModeloFacade;
 import com.bd.Modelo.User;
 import com.bds.BPO.BPOLocal;
-import com.bds.BPO.BPOServer;
 import com.devsmind.bancodesuenos.MainActivity;
 import com.devsmind.bancodesuenos.R;
 import com.devsmind.bancodesuenos.R.id;
@@ -137,7 +136,7 @@ public class LoginActivity extends Activity {
 			if (cancel) {
 				focusView.requestFocus();
 			} else {
-				
+				/*
 				mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
 				showProgress(true);
 			
@@ -151,7 +150,7 @@ public class LoginActivity extends Activity {
 					return;
 				}else{
 					showProgress(false);
-					Intent i ;
+					Intent i = null ;
 					if(response.equals("Correct new")){
 						i = new Intent(this,Activity_NewDream.class);
 						User u = new User(mEmail, mPassword);
@@ -163,7 +162,7 @@ public class LoginActivity extends Activity {
 					finish();
 					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(i);
-					}
+					}*/
 				}
 			}
 		else{
